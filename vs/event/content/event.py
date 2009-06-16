@@ -9,6 +9,11 @@ from zope.interface import implements
 from DateTime.DateTime import DateTime
 from Products.ATContentTypes.content.event import ATEvent
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
+from Products.DataGridField import DataGridField, DataGridWidget
+from Products.DataGridField.Column import Column
+from Products.DataGridField.SelectColumn import SelectColumn
+from Products.DataGridField.CheckboxColumn import CheckboxColumn
+
 from Products.CMFCore.permissions import View
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
@@ -107,6 +112,7 @@ VSEventSchema = atapi.Schema((
           widget=atapi.IntegerWidget(label=u'Count',
                                      description=u'Maxinum number of times the event repeats ',)
           ),
+
 ))
 
 VSEventSchema = VSEventSchema + ATEvent.schema.copy()
@@ -148,7 +154,31 @@ def modifyEventSchema(schema):
                                               with_popup=1,
                                               js_shortcuts=0,
                                               ignore_unset_time=1)
+    schema.addField(atapi.ReferenceField(name='attachments',
+                                allowed_types=('Link','File'),
+                                multiValued=1,
+                                relationship='aAttachment',
+                                widget=ReferenceBrowserWidget(
+                                    show_review_state=1,
+                                    allow_sorting=1,
+                                    force_close_on_insert=1,
+                                    base_query = {'Type':['Link','File']},
+                                    label=_(u'idg_event_label_attachments',),
+                                ),
+                            )) 
 
+    schema.addField(DataGridField(name="attendees",
+                            columns=('name', 'mail','role', 'show'),
+                            schemata='attendees',
+                            widget = DataGridWidget(
+                                label=_(u'idg_event_label_roleAttendees',),
+                                columns={
+                                    'name':     Column(_(u'idg_event_label_nameColumn')),
+                                    'mail':     Column(_(u'idg_event_label_mailColumn')),
+                                    'role':     SelectColumn(_(u'idg_event_label_roleColumn'), vocabulary='getAttendeeRoles'),
+                                    'show':     CheckboxColumn(_(u'idg_event_label_showColumn')),
+                                }),
+                            ))
     return schema
 
 class VSEvent(ATEvent):

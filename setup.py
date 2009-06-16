@@ -27,6 +27,7 @@ setup(name='vs.event',
           'setuptools',
           'dateable.chronos',
           'dateable.kalends',
+          'Products.DataGridField',
           'p4a.ploneevent',
           # -*- Extra requirements: -*-
       ],
