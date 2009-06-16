@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.2.2 - (2009/06/16)
+--------------------
+
+* added new field for attachments (UI + iCal)
+* added new field for attendees (UI + iCal)
+
 0.2.1 - (2009/06/13)
 --------------------
 

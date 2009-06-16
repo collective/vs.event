@@ -1,5 +1,6 @@
 
 from cStringIO import StringIO
+from AccessControl import Unauthorized
 from DateTime.DateTime import DateTime
 from Products.ATContentTypes.lib.calendarsupport import rfc2445dt, vformat, foldLine, ICS_EVENT_END, ICS_EVENT_START
 from Products.ATContentTypes.lib.calendarsupport import VCS_EVENT_START, VCS_EVENT_END
@@ -73,6 +74,21 @@ def getICal(event):
     location = event.getLocation()
     if location:
         out.write('LOCATION:%s\n' % vformat(location))
+
+    atts = self.getAttachments()
+    res = []
+    mtool = getToolByName(self, 'portal_membership')
+    for d in range(len(atts)):
+        try:
+            obj = atts[d]
+        except Unauthorized:
+            continue
+        if obj not in res:
+            if mtool.checkPermission('View', obj):
+                res.append(obj)
+    if res:
+        for r in res:
+            out.write('ATTACH;VALUE=URI:%s\n' % r.absolute_url())
 
     eventType = event.getEventType()
     if eventType:
