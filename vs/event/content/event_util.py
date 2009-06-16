@@ -1,10 +1,12 @@
 
 from cStringIO import StringIO
+from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
+
 from AccessControl import Unauthorized
 from DateTime.DateTime import DateTime
 from Products.ATContentTypes.lib.calendarsupport import rfc2445dt, vformat, foldLine, ICS_EVENT_END, ICS_EVENT_START
 from Products.ATContentTypes.lib.calendarsupport import VCS_EVENT_START, VCS_EVENT_END
-from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
+from Products.CMFCore.utils import getToolByName
 
 def date_for_display(event):
     """ Return dict containing pre-calculated information for 
@@ -75,9 +77,9 @@ def getICal(event):
     if location:
         out.write('LOCATION:%s\n' % vformat(location))
 
-    atts = self.getAttachments()
+    atts = event.getAttachments()
     res = []
-    mtool = getToolByName(self, 'portal_membership')
+    mtool = getToolByName(event, 'portal_membership')
     for d in range(len(atts)):
         try:
             obj = atts[d]
