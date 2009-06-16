@@ -167,6 +167,7 @@ def modifyEventSchema(schema):
                                 ),
                             )) 
 
+    del schema['attendees']
     schema.addField(DataGridField(name="attendees",
                             columns=('name', 'mail','role', 'show'),
                             schemata='attendees',
@@ -212,6 +213,14 @@ class VSEvent(ATEvent):
             self.setStartDate(DateTime(self.start().strftime('%Y/%m/%d 00:00:00')))
             self.setEndDate(DateTime(self.end().strftime('%Y/%m/%d 23:59:00')))
 
+    def getAttendeeRoles(self):
+        """ """
+        return atapi.DisplayList((
+            ('chair',_(u'idg_event_label_chair')),
+            ('observer',_(u'idg_event_label_observer')),
+            ('participant',_(u'idg_event_label_participant')),
+            ('opt_participant',_(u'idg_event_label_opt_participant')), 
+        )) 
 
 atapi.registerType(VSEvent, PROJECTNAME)
 
