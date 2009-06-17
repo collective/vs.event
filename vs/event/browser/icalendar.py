@@ -18,6 +18,7 @@ class iCalendarView(BrowserView):
 
         cal_types = list(calendar.getCalendarTypes())
         query = kw.copy()
+        query['path'] = '/'.join(self.context.getPhysicalPath())
         query.update(dict(portal_type=cal_types))
 
         result = list()
