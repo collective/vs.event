@@ -9,6 +9,7 @@ Features
 - recurring events (based on p4a.ploneevent)
 - a new calendar widget 
 - real support for all-day events
+- extended support for attendees and attachments (UI and iCal level)
 - working iCal/vCal export for all-day events
 - full integration with Plone4Artists calendar (must be installed seperately)
 - support for supplementary-events (one master event and several depending events)
@@ -27,6 +28,16 @@ references). So with ``vs.event`` you will see all supplementary events for the
 main event or jump directly from a supplementary event to its main event.  This
 feature is optional and can be disabled through the ZMI in portal_calendar ->
 vs_event_supplementary_events.
+
+Integration with Plone4Artists calendar
+=======================================
+
+``vs.event`` integrates smoothly with ``p4a.plonecalendar``. A new view
+``icalendar_export`` is registered for p4a.plonecalendar enabled folders.  It
+will export all ``vs.event`` related events in iCal. This means you can
+subscribe with iCal to a calendar taking full advantage of the `vs.event``
+functionality (including support for attachments and attendees on the iCal
+level).
 
 
 Installation
