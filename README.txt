@@ -1,7 +1,7 @@
 vs.event
 ========
 
-``vs.event`` provides an extendes event functionality for Plone
+``vs.event`` provides an extended event functionality for Plone
 
 Features
 ========
@@ -54,6 +54,11 @@ Known bugs and limitations
   so far. The date picker widget will use/present the US date format for
   languages other than German.
 
+
+TODO
+====
+
+- remove p4a.ploneevent dependencyies
 - more i18n needed
 
 
