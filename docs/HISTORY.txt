@@ -5,6 +5,8 @@ Changelog
 --------------------
 
 * display list of attachments in 'view' mode
+* fixed tests a bit
+* updated documentation
 
 
 0.2.2 - (2009/06/16)

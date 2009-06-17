@@ -9,7 +9,7 @@ from dateutil import rrule
 
 import zope.interface
 from Testing import ZopeTestCase
-from Products.Five import zcml
+from Products.Five import zcml, fiveconfigure 
 from AccessControl import getSecurityManager
 from DateTime.DateTime import DateTime
 from Products.PloneTestCase import PloneTestCase
@@ -17,25 +17,25 @@ from Products.PloneTestCase import layer
 from Products.PloneTestCase.layer import onsetup
 from Products.PloneTestCase.setup import portal_owner, default_password
 
-import vs.event
 from vs.event.content import event_util
 
 PloneTestCase.installProduct('vs.event')
-PloneTestCase.setupPloneSite(extension_profiles=('vs.event:default',))
 
 @onsetup
 def setup_package():
-
-  zcml.load_config('configure.zcml', vs.event)
-  ZopeTestCase.installPackage('vs.event')
+    fiveconfigure.debug_mode = True
+    import vs.event
+    zcml.load_config('configure.zcml', vs.event)
+    fiveconfigure.debug_mode = False
+    ZopeTestCase.installPackage('vs.event')
 
 setup_package()
+PloneTestCase.setupPloneSite(products=('vs.event',))
 
 class TestBase(PloneTestCase.FunctionalTestCase):
 
     def afterSetUp(self):
         ZopeTestCase.utils.setupCoreSessions(self.app)
-        zcml.load_config('configure.zcml', vs.event)
         self.membership = self.portal.portal_membership
         self.membership.addMember('god', 'secret', ['Manager'], [])
 

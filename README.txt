@@ -54,8 +54,8 @@ Known bugs and limitations
   so far. The date picker widget will use/present the US date format for
   languages other than German.
 
-- tooltip showing title/time within the P4A calendar does display  
-  all-day events properly
+- more i18n needed
+
 
 License
 =======
@@ -73,3 +73,14 @@ Authors
 - Andreas Jung
 - Veit Schiele
 - Anne Walther
+
+Repository
+==========
+
+http://svn.plnoe.org/svn.collective/vs.event
+
+
+Contact
+=======
+
+Send mail to vs.event@veit-schiele.de
