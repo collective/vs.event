@@ -1,6 +1,6 @@
 ################################################################
 # vs.event - published under the GPL 2
-# Authors: Andreas Jung, Veit Schiele, Anne Walther 
+# Authors: Andreas Jung, Veit Schiele, Anne Walther
 ################################################################
 
 from p4a.ploneevent.recurrence.browser.event_view import EventView
@@ -19,12 +19,11 @@ from vs.event.config import *
 from vs.event.interfaces import IVSSubEvent
 
 class VSEventView(EventView):
-    """
-    """
+    """ vs_event_view browser view """
+
     @memoize    
     def filteredAttendees(self):
-        """
-        """
+        """ return list of attendees with 'show' flag set """
         attendees = self.context.getAttendees()
         result = []
         for attendee in attendees:
@@ -52,16 +51,13 @@ class VSEventView(EventView):
 
     @memoize
     def nextDates(self):
-        """
-        """
+        """ Recurrence """
         return [ date.fromordinal(x) for x in IRecurrence(self.context, None).getOccurrenceDays()]
  
     @memoize
     def getExceptions(self):
-        """
-        """
-        return [parse(x) for x in self.context.getExceptions()]     
-
+        """ get recurrence exceptions """
+        return [parse(x) for x in self.context.getExceptions()]
 
 
     @memoize
@@ -94,5 +90,13 @@ class VSEventView(EventView):
     def isSubEvent(self):
         """ check if the current object is a VSSubEvent """
         return IVSSubEvent.providedBy(self.context)
+
+
+    def getAttachments(self):
+        """ Return all viewable attachments """
+        mtool = self.context.portal_membership
+        result = []
+        objs = self.context.getAttachments()
+        return [o for o in objs if mtool.checkPermission('View', o)]
 
 InitializeClass(VSEventView)
