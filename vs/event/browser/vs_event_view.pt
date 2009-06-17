@@ -88,7 +88,7 @@
 
                 <tal:if condition="not: isSubEvent">                
                     <tr tal:condition="python: exceptions" tal:define="exceptions view/getExceptions">
-                        <th i18n:translate="idg_event_label_exceptions" i18n:domain="idg.event"> exceptions </th>
+                        <th i18n:translate="vs_event_label_exceptions" i18n:domain="vs.event"> exceptions </th>
                         <td class="exceptions">
                             <span tal:repeat="ex exceptions" tal:omit-tag="">
                                 <span tal:content="python: view.toLocalizedTime(ex, long_format=0)" /> 
@@ -127,7 +127,7 @@
                     <td class="attendees">
                         <ul>
                             <li tal:repeat="a attendees">
-                                <span tal:replace="a/name" /> (<span tal:content="string:idg_event_label_${a/role}" tal:omit-tag="" i18n:translate=""  i18n:domain="idg.event" />)
+                                <span tal:replace="a/name" /> (<span tal:content="string:vs_event_label_${a/role}" tal:omit-tag="" i18n:translate=""  i18n:domain="vs.event" />)
                             </li>
                         </ul>
                         
@@ -174,7 +174,7 @@
         </div>
        
         <fieldset id="attachments" tal:define="atts view/getAttachments;getInfoFor python:wtool.getInfoFor;" tal:condition="atts">
-            <legend i18n:translate="idg_event_label_attachments" i18n:domain="idg.event">attachments</legend>
+            <legend i18n:translate="vs_event_label_attachments" i18n:domain="vs.event">attachments</legend>
             <ul class="visualNoMarker">
             <tal:related tal:repeat="item atts"
                          tal:define="use_view_action site_properties/typesUseViewActionInListings|python:();">
