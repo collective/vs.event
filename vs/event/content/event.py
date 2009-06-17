@@ -163,7 +163,7 @@ def modifyEventSchema(schema):
                                     allow_sorting=1,
                                     force_close_on_insert=1,
                                     base_query = {'Type':['Link','File']},
-                                    label=_(u'idg_event_label_attachments',),
+                                    label=_(u'vs_event_label_attachments',),
                                 ),
                             )) 
 
@@ -172,12 +172,12 @@ def modifyEventSchema(schema):
                             columns=('name', 'mail','role', 'show'),
                             schemata='attendees',
                             widget = DataGridWidget(
-                                label=_(u'idg_event_label_roleAttendees',),
+                                label=_(u'vs_event_label_roleAttendees',),
                                 columns={
-                                    'name':     Column(_(u'idg_event_label_nameColumn')),
-                                    'mail':     Column(_(u'idg_event_label_mailColumn')),
-                                    'role':     SelectColumn(_(u'idg_event_label_roleColumn'), vocabulary='getAttendeeRoles'),
-                                    'show':     CheckboxColumn(_(u'idg_event_label_showColumn')),
+                                    'name':     Column(_(u'vs_event_label_nameColumn')),
+                                    'mail':     Column(_(u'vs_event_label_mailColumn')),
+                                    'role':     SelectColumn(_(u'vs_event_label_roleColumn'), vocabulary='getAttendeeRoles'),
+                                    'show':     CheckboxColumn(_(u'vs_event_label_showColumn')),
                                 }),
                             ))
     return schema
@@ -216,10 +216,10 @@ class VSEvent(ATEvent):
     def getAttendeeRoles(self):
         """ """
         return atapi.DisplayList((
-            ('chair',_(u'idg_event_label_chair')),
-            ('observer',_(u'idg_event_label_observer')),
-            ('participant',_(u'idg_event_label_participant')),
-            ('opt_participant',_(u'idg_event_label_opt_participant')), 
+            ('chair',_(u'vs_event_label_chair')),
+            ('observer',_(u'vs_event_label_observer')),
+            ('participant',_(u'vs_event_label_participant')),
+            ('opt_participant',_(u'vs_event_label_opt_participant')), 
         )) 
 
 atapi.registerType(VSEvent, PROJECTNAME)
