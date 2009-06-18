@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.2.5 - (2009/06/18)
+--------------------
+
+* timezone fix in iCal export: whole day events used
+  a shortened date string based on UTC - but we need
+  a date string based on the local zone. 
+
+
 0.2.4 - (2009/06/17)
 --------------------
 
