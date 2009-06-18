@@ -172,6 +172,36 @@
         </p>
         
         </div>
+
+        <div id="vs-supplementary-events"
+             tal:condition="python: view.subeventsEnabled() and not isSubEvent">
+            <tal:if condition="view/getSupplementaryEvents" >
+                <h3 i18n:translate="vs_label_supplementary_events">Supplementary events</h3>
+                <dl>
+                    <tal:loop repeat="subevent view/getSupplementaryEvents">
+                        <dt>
+                            <a tal:attributes="href subevent/absolute_url" 
+                               tal:content="subevent/Title" 
+                            />
+                        </dt>
+                        <dd>
+                            <div tal:content="subevent/Description" />
+                            <div tal:define="date_dict subevent/date_for_display">
+                                <span tal:content="date_dict/from_str" />
+                                <tal:if condition="date_dict/to_str | nothing">
+                                    - <span tal:content="date_dict/to_str" />
+                                </tal:if>
+                            </div>
+                        </dd>
+                    </tal:loop>
+                </dl>
+            </tal:if>
+
+            <a tal:condition="view/allowedToAddSubEvents"
+               tal:attributes="href string:${context/absolute_url}/add_supplementary_event" 
+               i18n:translate="vs_label_add_dependent_event">Add supplementary event
+            </a>
+        </div>
        
         <fieldset id="attachments" tal:define="atts view/getAttachments;
                                                getInfoFor python:wtool.getInfoFor;" 
@@ -204,35 +234,6 @@
             </tal:related>
             </ul>
         </fieldset>
-        <div id="vs-supplementary-events"
-             tal:condition="python: view.subeventsEnabled() and not isSubEvent">
-            <tal:if condition="view/getSupplementaryEvents" >
-                <h3 i18n:translate="vs_label_supplementary_events">Supplementary events</h3>
-                <dl>
-                    <tal:loop repeat="subevent view/getSupplementaryEvents">
-                        <dt>
-                            <a tal:attributes="href subevent/absolute_url" 
-                               tal:content="subevent/Title" 
-                            />
-                        </dt>
-                        <dd>
-                            <div tal:content="subevent/Description" />
-                            <div tal:define="date_dict subevent/date_for_display">
-                                <span tal:content="date_dict/from_str" />
-                                <tal:if condition="date_dict/to_str | nothing">
-                                    - <span tal:content="date_dict/to_str" />
-                                </tal:if>
-                            </div>
-                        </dd>
-                    </tal:loop>
-                </dl>
-            </tal:if>
-
-            <a tal:condition="view/allowedToAddSubEvents"
-               tal:attributes="href string:${context/absolute_url}/add_supplementary_event" 
-               i18n:translate="vs_label_add_dependent_event">Add supplementary event
-            </a>
-        </div>
  
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
             show related items if they exist
