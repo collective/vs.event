@@ -58,7 +58,7 @@ Known bugs and limitations
 TODO
 ====
 
-- remove p4a.ploneevent dependencyies
+- remove p4a.ploneevent dependencies
 - more i18n needed
 
 
