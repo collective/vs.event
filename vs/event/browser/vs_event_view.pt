@@ -173,7 +173,9 @@
         
         </div>
        
-        <fieldset id="attachments" tal:define="atts view/getAttachments;getInfoFor python:wtool.getInfoFor;" tal:condition="atts">
+        <fieldset id="attachments" tal:define="atts view/getAttachments;
+                                               getInfoFor python:wtool.getInfoFor;" 
+                  tal:condition="atts">
             <legend i18n:translate="vs_event_label_attachments" i18n:domain="vs.event">attachments</legend>
             <ul class="visualNoMarker">
             <tal:related tal:repeat="item atts"

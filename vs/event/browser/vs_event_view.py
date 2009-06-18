@@ -94,6 +94,8 @@ class VSEventView(EventView):
 
     def getAttachments(self):
         """ Return all viewable attachments """
+        if self.isSubEvent():
+            return ()
         mtool = self.context.portal_membership
         result = []
         objs = self.context.getAttachments()
