@@ -82,7 +82,7 @@ Authors
 Repository
 ==========
 
-http://svn.plnoe.org/svn.collective/vs.event
+http://svn.plone.org/svn.collective/vs.event
 
 
 Contact
