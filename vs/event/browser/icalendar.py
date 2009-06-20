@@ -8,49 +8,50 @@ from Products.CMFCore.utils import getToolByName
 from Globals import InitializeClass
 
 class iCalendarView(BrowserView):
-    """ """
+    """ ICal export"""
 
-    def icalendar_export(self, **kw):
-        """ create a new dependent event"""
+    def icalendar_export(self, events=[], **kw):
+        """ iCal export for multiple events """
 
-        catalog = getToolByName(self.context, 'portal_catalog')
-        calendar = getToolByName(self.context, 'portal_calendar')
+        if not events:
+            catalog = getToolByName(self.context, 'portal_catalog')
+            calendar = getToolByName(self.context, 'portal_calendar')
 
-        cal_types = list(calendar.getCalendarTypes())
-        query = kw.copy()
-        query['path'] = '/'.join(self.context.getPhysicalPath())
-        query.update(dict(portal_type=cal_types))
+            query = kw.copy()
+            query['path'] = '/'.join(self.context.getPhysicalPath())
+            cal_types = list(calendar.getCalendarTypes())
+            query.update(dict(portal_type=cal_types))
 
-        result = list()
-        write = result.append
-        calname = self.context.Title()
+            brains = catalog(query)
+            events = [b.getObject() for b in brains]
 
         try:
             relcalid = self.context.UID()
         except AttributeError:
             relcalid = self.context.portal_url.getPortalObject().getId()
 
+        result = list()
+        write = result.append
         write('BEGIN:VCALENDAR')
         write('VERSION:2.0')
-        write('X-WR-CALNAME:%s' % calname.upper())
-        write('PRODID:-//Plone 3.0\, Inc//(C) ZOPYX Ltd & Co. KG//EN')
-        write('X-WR-RELCALID:%s'%relcalid)
+        write('X-WR-CALNAME:%s' % self.context.Title().upper())
+        write('PRODID:-//Plone 3-vs.event\, Inc//(C) ZOPYX Ltd & Co. KG//EN')
+        write('X-WR-RELCALID:%s' % relcalid)
         write('X-WR-TIMEZONE:Europe/Berlin')
         write('CALSCALE:GREGORIAN')
         write('METHOD:PUBLISH')
 
-        for brain in catalog(query):
-            event = brain.getObject()
+        for event in events:
             ical_out = event.getICal()
             for line in ical_out.split('\n'):
                 write(line)
 
         write('END:VCALENDAR')
 
-        body = '\n'.join(result)
         self.context.request.response.setHeader('Content-Length', len(body))
         self.context.request.response.setHeader('Content-Type', 'text/x-vcalendar')
         self.context.request.response.setHeader('Content-Disposition', 'attachment; filename=plone-cal.ics')
+        body = '\n'.join(result)
         return self.context.request.response.write(body)
 
 InitializeClass(iCalendarView)
