@@ -42,8 +42,7 @@ class iCalendarView(BrowserView):
         write('METHOD:PUBLISH')
 
         for event in events:
-            ical_out = event.getICal()
-            for line in ical_out.split('\n'):
+            for line in event.getICal().split('\n'):
                 write(line)
 
         write('END:VCALENDAR')
