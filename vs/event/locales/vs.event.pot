@@ -1,181 +1,218 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-12-03 16:16+0000\n"
+"Project-Id-Version: vs.event\n"
+"POT-Creation-Date: 2009-06-20 08:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: vs.event i18n <vs.event@veit-schiele.de>\n"
+"Language-Team: vs.event i18n <vs.event@veit-schiele.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
-"Preferred-Encodings: utf-8 latin1\n"
-"Domain: vs.event\n"
+
+#: ./content/event.py:112
+msgid "Count"
+msgstr ""
 
 #. Default: "Edit"
-#: vs.event/vs.event/profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSSubEvent.xml
 msgid "Edit"
 msgstr ""
 
+#: ./content/event.py:107
+msgid "Event repeats until this date."
+msgstr ""
+
 #. Default: "External Edit"
-#: vs.event/vs.event/profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSSubEvent.xml
 msgid "External Edit"
 msgstr ""
 
 #. Default: "History"
-#: vs.event/vs.event/profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSSubEvent.xml
 msgid "History"
 msgstr ""
 
-#. Default: "VSEvent"
-#: vs.event/vs.event/profiles/default/types/VSEvent.xml
-msgid "VSEvent"
-msgstr ""
-
 #. Default: "Information about an upcoming event, which can be displayed in the calendar."
-#: vs.event/vs.event/profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSSubEvent.xml
 msgid "Information about an upcoming event, which can be displayed in the calendar."
 msgstr ""
 
+#: ./content/event.py:113
+msgid "Maxinum number of times the event repeats "
+msgstr ""
+
+#: ./content/event.py:106
+msgid "Range"
+msgstr ""
+
 #. Default: "References"
-#: vs.event/vs.event/profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSSubEvent.xml
 msgid "References"
 msgstr ""
 
+#: ./content/event.py:95
+msgid "Repeats"
+msgstr ""
+
+#: ./content/event.py:101
+msgid "Repeats every"
+msgstr ""
+
+#: ./content/event.py:102
+msgid "Repeats every day/week/month/year."
+msgstr ""
+
+#. Default: "VSEvent"
+#: ./profiles/default/types/VSEvent.xml
+msgid "VSEvent"
+msgstr ""
+
+#. Default: "VSSubEvent"
+#: ./profiles/default/types/VSSubEvent.xml
+msgid "VSSubEvent"
+msgstr ""
+
 #. Default: "View"
-#: vs.event/vs.event/profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSSubEvent.xml
 msgid "View"
 msgstr ""
 
 #. Default: "iCalendar"
-#: vs.event/vs.event/profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSSubEvent.xml
 msgid "iCalendar"
 msgstr ""
 
-#: vs.event/vs.event/content/event.py:54
-msgid "vs.event_address_local"
+#: ./content/event.py:151
+msgid "label_event_end"
 msgstr ""
 
-#: vs.event/vs.event/content/event.py:54
-msgid "vs.event_address_relation"
+#: ./content/event.py:142
+msgid "label_event_start"
 msgstr ""
 
-#: vs.event/vs.event/content/event.py:131
-msgid "vs.event_help_bysetpos"
+#. Default: "hour"
+#: ./skins/vs_calendarwidget/vs_calendarwidget.pt:66
+msgid "label_hour"
 msgstr ""
 
-#: vs.event/vs.event/content/event.py:140
-msgid "vs.event_help_exceptions"
+#: ./content/event.py:134
+msgid "label_use_end_date"
 msgstr ""
 
-#: vs.event/vs.event/content/event.py:122
-msgid "vs.event_help_weekdays"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:63
-msgid "vs.event_label_addressLocal"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:57
-msgid "vs.event_label_addressMode"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:77
-msgid "vs.event_label_addressRelation"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:104
-msgid "vs.event_label_attachments"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:130
-msgid "vs.event_label_bysetpos"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:166
-msgid "vs.event_label_chair"
-msgstr ""
-
-#. Default: "exceptions"
-#: vs.event/vs.event/browser/vs.event_view.pt:122
-msgid "vs.event_label_exceptions"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:88
-msgid "vs.event_label_mailColumn"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:87
-msgid "vs.event_label_nameColumn"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:167
-msgid "vs.event_label_observer"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:169
-msgid "vs.event_label_opt_participant"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:47
-msgid "vs.event_label_organizer"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:168
-msgid "vs.event_label_participant"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:85
-msgid "vs.event_label_roleAttendees"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:89
-msgid "vs.event_label_roleColumn"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:90
-msgid "vs.event_label_showColumn"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:121
-msgid "vs.event_label_weekdays"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:112
-msgid "vs_label_di"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:114
-msgid "vs_label_do"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:115
-msgid "vs_label_fr"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:113
-msgid "vs_label_mi"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:111
-msgid "vs_label_mo"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:116
-msgid "vs_label_sa"
-msgstr ""
-
-#: vs.event/vs.event/content/event.py:117
-msgid "vs_label_so"
+#: ./content/event.py:126
+msgid "label_whole_day_event"
 msgstr ""
 
 #. Default: "vCalendar"
-#: vs.event/vs.event/profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSEvent.xml
+#: ./profiles/default/types/VSSubEvent.xml
 msgid "vCalendar"
+msgstr ""
+
+#: ./content/event.py:81
+msgid "vs_event_help_exceptions"
+msgstr ""
+
+#: ./content/event.py:72
+msgid "vs_event_help_interval"
+msgstr ""
+
+#: ./content/event.py:63
+msgid "vs_event_help_weekdays"
+msgstr ""
+
+#. Default: "attachments"
+#: ./browser/vs_event_view.pt:210
+msgid "vs_event_label_attachments"
+msgstr ""
+
+#: ./content/event.py:218
+msgid "vs_event_label_chair"
+msgstr ""
+
+#. Default: "exceptions"
+#: ./browser/vs_event_view.pt:91
+msgid "vs_event_label_exceptions"
+msgstr ""
+
+#: ./content/event.py:71
+msgid "vs_event_label_interval"
+msgstr ""
+
+#: ./content/event.py:177
+msgid "vs_event_label_mailColumn"
+msgstr ""
+
+#: ./content/event.py:176
+msgid "vs_event_label_nameColumn"
+msgstr ""
+
+#: ./content/event.py:219
+msgid "vs_event_label_observer"
+msgstr ""
+
+#: ./content/event.py:221
+msgid "vs_event_label_opt_participant"
+msgstr ""
+
+#: ./content/event.py:220
+msgid "vs_event_label_participant"
+msgstr ""
+
+#: ./content/event.py:174
+msgid "vs_event_label_roleAttendees"
+msgstr ""
+
+#: ./content/event.py:178
+msgid "vs_event_label_roleColumn"
+msgstr ""
+
+#: ./content/event.py:179
+msgid "vs_event_label_showColumn"
+msgstr ""
+
+#: ./content/event.py:62
+msgid "vs_event_label_weekdays"
+msgstr ""
+
+#. Default: "Add supplementary event"
+#: ./browser/vs_event_view.pt:200
+msgid "vs_label_add_dependent_event"
+msgstr ""
+
+#: ./content/event.py:53
+msgid "vs_label_di"
+msgstr ""
+
+#: ./content/event.py:55
+msgid "vs_label_do"
+msgstr ""
+
+#: ./content/event.py:56
+msgid "vs_label_fr"
+msgstr ""
+
+#: ./content/event.py:54
+msgid "vs_label_mi"
+msgstr ""
+
+#: ./content/event.py:52
+msgid "vs_label_mo"
+msgstr ""
+
+#: ./content/event.py:57
+msgid "vs_label_sa"
+msgstr ""
+
+#: ./content/event.py:58
+msgid "vs_label_so"
 msgstr ""
 
