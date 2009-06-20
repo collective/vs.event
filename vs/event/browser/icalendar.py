@@ -47,9 +47,10 @@ class iCalendarView(BrowserView):
 
         write('END:VCALENDAR')
 
-        self.context.request.response.setHeader('Content-Length', len(body))
-        self.context.request.response.setHeader('Content-Type', 'text/x-vcalendar')
-        self.context.request.response.setHeader('Content-Disposition', 'attachment; filename=plone-cal.ics')
+        setHeader = self.context.request.response.setHeader
+        setHeader('Content-Length', len(body))
+        setHeader('Content-Type', 'text/x-vcalendar')
+        setHeader('Content-Disposition', 'attachment; filename=plone-cal.ics')
         body = '\n'.join(result)
         return self.context.request.response.write(body)
 
