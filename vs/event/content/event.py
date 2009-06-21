@@ -206,6 +206,9 @@ class VSEvent(ATEvent):
         """ Ensure that for single-day dates without an end date
             the end date is equal to the start date.
         """
+
+        self.setExcludeFromNav(True)
+
         if not self.getUseEndDate():
             self.setEndDate(self.start())
 
