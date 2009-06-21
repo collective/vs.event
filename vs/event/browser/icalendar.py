@@ -47,11 +47,22 @@ class iCalendarView(BrowserView):
 
         write('END:VCALENDAR')
 
+        body = '\n'.join(result)
         setHeader = self.context.request.response.setHeader
         setHeader('Content-Length', len(body))
         setHeader('Content-Type', 'text/x-vcalendar')
         setHeader('Content-Disposition', 'attachment; filename=plone-cal.ics')
-        body = '\n'.join(result)
         return self.context.request.response.write(body)
+
+    def icalendar_export_event(self):
+        """ iCal export for a single event (including subevents) """
+
+        events = [self.context]
+        try:
+            events.extend(self.context.getSubEvents())
+        except AttributeError:
+            pass
+
+        return self.icalendar_export(events=events)
 
 InitializeClass(iCalendarView)

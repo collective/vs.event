@@ -1,6 +1,15 @@
 Changelog
 =========
 
+0.2.8 - (2009/06/21)
+--------------------
+
+* updated locales
+* using icalendar_export_event view as a replacement for ics_view
+* ical export for an event with supplementary events now exports
+  all related events instead of having to subscribe each individual
+  event
+
 0.2.7 - (2009/06/19)
 --------------------
 

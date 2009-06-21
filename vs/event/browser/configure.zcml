@@ -35,6 +35,15 @@
         class=".icalendar.iCalendarView"
       />
 
+
+    <browser:page
+        name="icalendar_export_event"
+        attribute="icalendar_export_event"
+        for="vs.event.interfaces.IVSEvent"
+        permission="zope2.View"
+        class=".icalendar.iCalendarView"
+      />
+
     <!-- Resource directory for JS -->
     <browser:resource
         name="vs-event.js"

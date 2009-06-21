@@ -87,7 +87,10 @@ def getICal(event):
     if location:
         out.write('LOCATION:%s\n' % vformat(location))
 
-    atts = event.getAttachments()
+    try:
+        atts = event.getAttachments()
+    except (KeyError,AttributeError):
+        atts = []
     res = []
     mtool = getToolByName(event, 'portal_membership')
     for d in range(len(atts)):
