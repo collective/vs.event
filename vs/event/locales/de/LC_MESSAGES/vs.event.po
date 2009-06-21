@@ -105,7 +105,7 @@ msgstr "Stunde"
 
 #: ./content/event.py:134
 msgid "label_use_end_date"
-msgstr "Enddatum"
+msgstr "Enddatum verwenden?"
 
 #: ./content/event.py:126
 msgid "label_whole_day_event"

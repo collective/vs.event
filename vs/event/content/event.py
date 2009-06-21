@@ -103,9 +103,12 @@ VSEventSchema = atapi.Schema((
          ),
     atapi.DateTimeField('until',
          schemata="recurrence",
-         widget=atapi.CalendarWidget(label=u'Range',
-              description=u"Event repeats until this date.",
-              show_hm=True)
+         widget=VSCalendarWidget(description=u"Event repeats until this date.",
+                                 description_msgid = "vs_repeat_events_until_date",
+                                 label="Repeat until",
+                                 label_msgid="vs_label_repeat_until",
+                                 i18n_domain="vs.event",
+                                 with_time=1),
          ),
     atapi.IntegerField('count',
           schemata="recurrence",
@@ -122,16 +125,18 @@ finalizeATCTSchema(VSEventSchema, folderish=False, moveDiscussion=True)
 def modifyEventSchema(schema):
     schema.addField(atapi.BooleanField('wholeDay',
                                        description_msg='help_whole_day_event',
-                                       label='Whole day event',
-                                       label_msgid='label_whole_day_event',
-                                       i18n_domain='vs.event',
+                                       widget=atapi.BooleanWidget(
+                                           label='Whole day event',
+                                           label_msgid='label_whole_day_event',
+                                           i18n_domain='vs.event'),
                                        ))
     schema.addField(atapi.BooleanField('useEndDate',
                                        default=True,
                                        description_msg='help_has_end_date',
-                                       label='useEndDate',
-                                       label_msgid='label_use_end_date',
-                                       i18n_domain='vs.event',
+                                       widget=atapi.BooleanWidget(
+                                           label='useEndDate',
+                                           label_msgid='label_use_end_date',
+                                           i18n_domain='vs.event'),
                                        ))
     schema.moveField('wholeDay', before='startDate')
     schema.moveField('useEndDate', after='wholeDay')
@@ -139,7 +144,7 @@ def modifyEventSchema(schema):
                                                 description_msgid = "help_event_start",
                                                 label="Event Starts",
                                                 label_msgid = "label_event_start",
-                                                i18n_domain = "vs.event",
+                                                i18n_domain="vs.event",
                                                 with_time=1,
                                                 with_popup=1,
                                                 js_shortcuts=0,
@@ -154,6 +159,17 @@ def modifyEventSchema(schema):
                                               with_popup=1,
                                               js_shortcuts=0,
                                               ignore_unset_time=1)
+
+    del schema['until']
+    schema.addField(atapi.DateTimeField('until',
+                            schemata='attendees',
+                                 widget=VSCalendarWidget(description=u"Event repeats until this date",
+                                 description_msgid="vs_repeat_events_until_date",
+                                 label="Repeat until",
+                                 label_msgid="vs_label_repeat_until",
+                                 i18n_domain="vs.event",
+                                 with_time=1)))
+
     schema.addField(atapi.ReferenceField(name='attachments',
                                 allowed_types=('Link','File'),
                                 multiValued=1,
