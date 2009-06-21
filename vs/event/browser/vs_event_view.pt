@@ -234,6 +234,11 @@
             </tal:related>
             </ul>
         </fieldset>
+
+        <div id="vs-event-subscription-url">
+            <span class="label" i18n:translate="vs_subscription_url">Subscription URL</span>:
+            <span tal:replace="string:${context/absolute_url}/icalendar_export_event" />
+        </div>
  
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
             show related items if they exist
