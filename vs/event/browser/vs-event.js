@@ -55,7 +55,16 @@ $j(document).ready(function() {
         });
     }
 
-    $j('.calendarInput').datepicker({dateFormat : JQUERY_DATE_FORMAT,
+    var jquery_date_format = 'yy-mm-dd';
+    var python_date_format = '%Y-%m-%d';
+
+    try {
+        jquery_date_format = JQUERY_DATE_FORMAT;
+        python_date_format = PYTHON_DATE_FORMAT;
+                
+    } catch(e) {}
+
+    $j('.calendarInput').datepicker({dateFormat : jquery_date_format,
                                      numberOfMonths : 1,
                                      showButtonPanel : true,
                                      });
@@ -65,7 +74,7 @@ $j(document).ready(function() {
     });
 
     $j('.calendarInputDateFormat').each(function(f) {
-            this.value = PYTHON_DATE_FORMAT;
+            this.value = python_date_format;
     });
 
 })
