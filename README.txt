@@ -39,7 +39,6 @@ subscribe with iCal to a calendar taking full advantage of the `vs.event``
 functionality (including support for attachments and attendees on the iCal
 level).
 
-
 Installation
 ============
 
@@ -54,13 +53,11 @@ Known bugs and limitations
   so far. The date picker widget will use/present the US date format for
   languages other than German.
 
-
 TODO
 ====
 
 - remove p4a.ploneevent dependencies
 - more i18n needed
-
 
 License
 =======
@@ -69,8 +66,6 @@ License
 
 Parts of the code of ``vs.event`` (iCal implementation) are based on work
 in ATContentTypes.
-
-
 
 Authors
 =======
@@ -83,7 +78,6 @@ Repository
 ==========
 
 http://svn.plone.org/svn.collective/vs.event
-
 
 Contact
 =======
