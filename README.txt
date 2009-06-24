@@ -77,7 +77,7 @@ Authors
 Repository
 ==========
 
-http://svn.plone.org/svn.collective/vs.event
+http://svn.plone.org/svn/collective/vs.event
 
 Contact
 =======
