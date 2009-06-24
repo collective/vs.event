@@ -2,7 +2,7 @@ Changelog
 =========
 
 0.2.10 - (2009/06/24)
---------------------
+---------------------
 
 * post_validator() now takes the value of 'useEndDate' into account
 
