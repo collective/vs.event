@@ -60,7 +60,7 @@ class iCalendarView(BrowserView):
         events = [self.context]
         try:
             events.extend(self.context.getSubEvents())
-        except AttributeError:
+        except (KeyError, AttributeError):
             pass
 
         return self.icalendar_export(events=events)
