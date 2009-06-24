@@ -241,6 +241,15 @@ class VSEvent(ATEvent):
             ('opt_participant',_(u'vs_event_label_opt_participant')), 
         )) 
 
+    security.declareProtected(View, 'post_validate')
+    def post_validate(self, REQUEST=None, errors=None):
+        """ Trigger original ATEvent.post_validate_method() for
+            dates having an end date.
+        """
+        if REQUEST.get('useEndDate', True) == True:
+            return super(VSEvent, self).post_validate(REQUEST=REQUEST, 
+                                                      errors=errors)
+
 atapi.registerType(VSEvent, PROJECTNAME)
 
 
