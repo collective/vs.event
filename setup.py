@@ -29,7 +29,6 @@ setup(name='vs.event',
           'dateable.kalends',
           'Products.DataGridField',
           'p4a.common',
-          'p4a.ploneevent',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
