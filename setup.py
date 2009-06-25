@@ -25,6 +25,7 @@ setup(name='vs.event',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'python-dateutil',
           'dateable.chronos',
           'dateable.kalends',
           'Products.DataGridField',
