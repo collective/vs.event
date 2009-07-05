@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.2.11'
+version = '0.2.12'
 
 setup(name='vs.event',
       version=version,
@@ -29,7 +29,6 @@ setup(name='vs.event',
           'dateable.chronos',
           'dateable.kalends',
           'Products.DataGridField',
-          'p4a.common',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
