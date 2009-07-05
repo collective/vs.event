@@ -5,6 +5,7 @@ import datetime
 from dateutil import rrule, tz
 from zope import interface
 from zope import component
+from zope import schema
 from zope.app.annotation import interfaces as annointerfaces
 
 from persistent.dict import PersistentDict

@@ -3,24 +3,90 @@
 # Authors: Andreas Jung, Veit Schiele, Anne Walther
 ################################################################
 
-from p4a.ploneevent.recurrence.browser.event_view import EventView
 from zope import interface 
 from plone.memoize.instance import memoize
 from datetime import date 
 from dateable.kalends import IRecurrence
 from dateutil.parser import parse
 from Globals import InitializeClass
+from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from AccessControl import Unauthorized, getSecurityManager
 from Products.CMFPlone.utils import base_hasattr
 from Products.CMFCore.permissions import ModifyPortalContent, View
+from dateable.kalends import IRecurringEvent
 
 from vs.event.config import *
 from vs.event.interfaces import IVSSubEvent
 
-class VSEventView(EventView):
+class VSEventView(BrowserView):
     """ vs_event_view browser view """
 
+    def same_day(self):
+        return self.context.start().Date() == self.context.end().Date()
+
+    def short_start_date(self):
+        return self.context.toLocalizedTime(self.context.start(), long_format=0)
+        
+    def long_start_date(self):
+        return self.context.toLocalizedTime(self.context.start(), long_format=1)
+    
+    def start_time(self):
+        return self.context.start().strftime(self.time_format())
+
+    def short_end_date(self):
+        return self.context.toLocalizedTime(self.context.end(), long_format=0)
+    
+    def long_end_date(self):
+        return self.context.toLocalizedTime(self.context.end(), long_format=1)
+
+    def end_time(self):
+        return self.context.end().strftime(self.time_format())
+
+    def datetime_format(self):
+        site_properties = self.context.portal_properties.site_properties
+        return site_properties.getProperty('localLongTimeFormat')
+
+    def date_format(self):
+        site_properties = self.context.portal_properties.site_properties
+        return site_properties.getProperty('localTimeFormat')
+    
+    def time_format(self):
+        datetime_format = self.datetime_format()
+        if '%p' in datetime_format:
+            # Using AM/PM:
+            return ' '.join(datetime_format.split(' ')[-2:])
+        # 24 H format
+        return datetime_format.split(' ')[-1]
+
+    def isRecurring(self):
+        return IRecurringEvent.providedBy(self.context)
+
+    def rrule(self):
+        return IRecurrence(self.context, None).getRecurrenceRule()
+
+    def rrule_freq(self):
+        rrule = self.rrule()
+        if rrule is None:
+            return ''
+        if rrule._interval == 1:
+            text = u"Every ${frequency}"
+        else:
+            text = u"Every ${interval} ${frequency}s"
+
+        return translate(text, mapping={'interval':rrule._interval, 
+                                        'frequency':FREQ[rrule._freq]})
+    def rrule_interval(self):
+        rrule = self.rrule()
+        if rrule is not None:
+            return rrule._interval
+        return 0
+        
+    def rrule_end(self):
+        rrule = self.rrule()
+        if rrule is not None and rrule._until:
+            return self.context.toLocalizedTime(dt2DT(rrule._until), long_format=0)
+        return ''
     @memoize    
     def filteredAttendees(self):
         """ return list of attendees with 'show' flag set """
