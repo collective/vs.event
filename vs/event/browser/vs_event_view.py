@@ -3,7 +3,6 @@
 # Authors: Andreas Jung, Veit Schiele, Anne Walther
 ################################################################
 
-from zope import interface 
 from plone.memoize.instance import memoize
 from datetime import date 
 from dateable.kalends import IRecurrence
@@ -11,8 +10,7 @@ from dateutil.parser import parse
 from Globals import InitializeClass
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
-from AccessControl import Unauthorized, getSecurityManager
-from Products.CMFPlone.utils import base_hasattr
+from AccessControl import getSecurityManager
 from Products.CMFCore.permissions import ModifyPortalContent, View
 from dateable.kalends import IRecurringEvent
 

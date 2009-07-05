@@ -1,6 +1,6 @@
 
 from cStringIO import StringIO
-from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
+from dateutil.rrule import YEARLY, MONTHLY, WEEKLY
 
 from AccessControl import Unauthorized
 from DateTime.DateTime import DateTime

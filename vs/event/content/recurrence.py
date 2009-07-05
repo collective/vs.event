@@ -2,18 +2,14 @@
 # $Id: recurrence.py 265 2009-06-10 07:47:58Z ajung $
 
 import datetime
-from dateutil import rrule, tz
+from dateutil import rrule
 from zope import interface
 from zope import component
 from zope import schema
 from zope.app.annotation import interfaces as annointerfaces
 
-from persistent.dict import PersistentDict
-
-from p4a.common.descriptors import anno
 from p4a.common.dtutils import DT2dt
 
-from Products.ATContentTypes.content.event import ATEvent
 from vs.event.content.event import VSEvent
 
 from dateable import kalends

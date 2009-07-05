@@ -15,7 +15,6 @@ from DateTime.DateTime import DateTime
 from Products.PloneTestCase import PloneTestCase
 from Products.PloneTestCase import layer
 from Products.PloneTestCase.layer import onsetup
-from Products.PloneTestCase.setup import portal_owner, default_password
 
 from vs.event.content import event_util
 
