@@ -6,7 +6,7 @@ vs.event
 Features
 ========
 
-- recurring events (based on p4a.ploneevent)
+- recurring events
 - a new calendar widget 
 - real support for all-day events
 - extended support for attendees and attachments (UI and iCal level)
@@ -56,7 +56,6 @@ Known bugs and limitations
 TODO
 ====
 
-- remove p4a.ploneevent dependencies
 - more i18n needed
 
 License
