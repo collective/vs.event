@@ -7,13 +7,12 @@ from zope import interface
 from zope import component
 from zope import schema
 from zope.app.annotation import interfaces as annointerfaces
-
-from p4a.common.dtutils import DT2dt
+from dateable import kalends
+from dateutil.rrule import MO, TU, WE, TH, FR, SA, SU
+from dtutils import DT2dt
 
 from vs.event.content.event import VSEvent
 
-from dateable import kalends
-from dateutil.rrule import MO, TU, WE, TH, FR, SA, SU
 
 wdays = [MO, TU, WE, TH, FR, SA, SU]
 
