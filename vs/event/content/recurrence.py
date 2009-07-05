@@ -9,7 +9,6 @@ from zope.app.annotation import interfaces as annointerfaces
 
 from persistent.dict import PersistentDict
 
-from p4a.ploneevent.recurrence import interfaces
 from p4a.common.descriptors import anno
 from p4a.common.dtutils import DT2dt
 
@@ -20,6 +19,15 @@ from dateable import kalends
 from dateutil.rrule import MO, TU, WE, TH, FR, SA, SU
 
 wdays = [MO, TU, WE, TH, FR, SA, SU]
+
+class IRecurrenceConfig(interface.Interface):
+    """Configuration information for an event.
+    """
+    
+    is_recurring = schema.Bool(
+        title=u'Recurring event',
+        description=u'This event recurs'
+        )
 
 class VSRecurrenceSupport(object):
     """Recurrence support"""
@@ -111,7 +119,7 @@ class EventRecurrenceConfig(object):
     """An IRecurrenceConfig adapter for events.
     """
     
-    interface.implements(interfaces.IRecurrenceConfig)
+    interface.implements(IRecurrenceConfig)
     component.adapts(VSEvent)
 
     def __init__(self, context):
