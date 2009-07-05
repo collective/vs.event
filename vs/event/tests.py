@@ -136,7 +136,8 @@ class RecurrenceTest(TestBase):
     def testRecurranceMidnight(self):
         # Check that the recurrence works correctly with events starting
         # at midnight
-        self.folder.invokeFactory('Event', 'event')
+        self.login('god')
+        self.folder.invokeFactory('VSEvent', 'event')
         event = getattr(self.folder, 'event')
 
         event.update(startDate = DateTime('2001/02/01 00:00'),
@@ -159,7 +160,8 @@ class RecurrenceTest(TestBase):
         self.failUnlessEqual(len(dates), 3)
 
     def testRecurranceWeek(self):
-        self.folder.invokeFactory('Event', 'event')
+        self.login('god')
+        self.folder.invokeFactory('VSEvent', 'event')
         event = getattr(self.folder, 'event')
 
         event.update(startDate = DateTime('2007/02/01 00:00'),
