@@ -7,6 +7,7 @@ from plone.memoize.instance import memoize
 from datetime import date 
 from dateable.kalends import IRecurrence
 from dateutil.parser import parse
+from zope.i18n import translate
 from Globals import InitializeClass
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
@@ -16,6 +17,15 @@ from dateable.kalends import IRecurringEvent
 
 from vs.event.config import *
 from vs.event.interfaces import IVSSubEvent
+
+FREQ = {0: 'year',
+        1: 'month',
+        2: 'week',
+        3: 'day',
+        4: 'hour',
+        5: 'minute',
+        6: 'second',
+    }
 
 class VSEventView(BrowserView):
     """ vs_event_view browser view """
