@@ -4,7 +4,7 @@ Changelog
 0.2.15 - (2009/07/08)
 ---------------------
 
-* fixed import issues in browser view code (reported by Danioel Widerin)
+* fixed import issues in browser view code (reported by Daniel Widerin)
 
 
 0.2.14 - (2009/07/08)
