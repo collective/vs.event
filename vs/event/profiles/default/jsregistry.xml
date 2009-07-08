@@ -4,7 +4,7 @@
  <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True"
     id="++resource++jquery-ui-custom.js" inline="False"/>
- <javascript cacheable="True" compression="safe" cookable="True"
+ <javascript cacheable="True" compression="safe" cookable="False"
     enabled="True"
     id="++resource++vs-event.js" inline="False"/>
 </object>
