@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.2.14 - (2009/07/08)
+---------------------
+
+* 'until' field appeared within the wrong schemata
+
+
 0.2.13 - (2009/07/08)
 ---------------------
 
