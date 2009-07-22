@@ -180,7 +180,9 @@ def modifyEventSchema(schema):
                                     allow_sorting=1,
                                     force_close_on_insert=1,
                                     base_query = {'Type':['Link','File']},
-                                    label=_(u'vs_event_label_attachments',),
+                                    i18n_domain="vs.event",
+                                    label='Attachments',
+                                    label_msgid='vs_event_label_attachments',
                                 ),
                             )) 
 
@@ -272,7 +274,7 @@ def modifySubEventSchema(schema):
     schema.addField(atapi.BooleanField('useEndDate',
                                        default=True,
                                        description_msg='help_has_end_date',
-                                       label='useEndDate',
+                                       label='Use end date?',
                                        label_msgid='label_use_end_date',
                                        i18n_domain='vs.event',
                                        ))
