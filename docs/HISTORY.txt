@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.2.16 - (2009/07/22)
+---------------------
+
+* some i18n fixes
+* hidding subscription URL in view mode since this is information is
+  redundant
+
+
 0.2.15 - (2009/07/08)
 ---------------------
 

@@ -176,7 +176,7 @@
         <div id="vs-supplementary-events"
              tal:condition="python: view.subeventsEnabled() and not isSubEvent">
             <tal:if condition="view/getSupplementaryEvents" >
-                <h3 i18n:translate="vs_label_supplementary_events">Supplementary events</h3>
+                <h3 i18n:domain="vs.event" i18n:translate="vs_label_supplementary_events">Supplementary events</h3>
                 <dl>
                     <tal:loop repeat="subevent view/getSupplementaryEvents">
                         <dt>
@@ -199,6 +199,7 @@
 
             <a tal:condition="view/allowedToAddSubEvents"
                tal:attributes="href string:${context/absolute_url}/add_supplementary_event" 
+               i18n:domain="vs.event"
                i18n:translate="vs_label_add_dependent_event">Add supplementary event
             </a>
         </div>
@@ -236,7 +237,7 @@
         </fieldset>
 
         <div id="vs-event-subscription-url">
-            <span class="label" i18n:translate="vs_subscription_url">Subscription URL</span>:
+            <span class="label" i18n:domain="vs.event" i18n:translate="vs_subscription_url">Subscription URL</span>:
             <span tal:replace="string:${context/absolute_url}/icalendar_export_event" />
         </div>
  
