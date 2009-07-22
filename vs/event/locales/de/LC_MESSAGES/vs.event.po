@@ -186,7 +186,7 @@ msgstr "Wochentage"
 #. Default: "Add supplementary event"
 #: ./browser/vs_event_view.pt:200
 msgid "vs_label_add_dependent_event"
-msgstr "Ergänzenden Terim hinzufügen"
+msgstr "Ergänzenden Termin hinzufügen"
 
 #: ./content/event.py:53
 msgid "vs_label_di"
