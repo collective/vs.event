@@ -69,6 +69,7 @@ VSEventSchema = atapi.Schema((
         validators=('isLineOfInts',),
         widget=atapi.StringWidget(
             label=_(u'vs_event_label_bysetpos'),
+            i18n_domain="vs.event",
             description=_(u'vs_event_help_bysetpos'),
         ),
     ),
