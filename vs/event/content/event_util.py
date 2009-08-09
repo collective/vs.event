@@ -8,6 +8,9 @@ from Products.ATContentTypes.lib.calendarsupport import rfc2445dt, vformat, fold
 from Products.ATContentTypes.lib.calendarsupport import VCS_EVENT_START, VCS_EVENT_END
 from Products.CMFCore.utils import getToolByName
 
+from dateable.kalends import IRecurringEvent
+
+
 def date_for_display(event):
     """ Return dict containing pre-calculated information for 
         building a <start>-<end> date string. Keys are
@@ -66,7 +69,6 @@ def _dateStringsForEvent(event):
 
 
 def getICal(event):
-
     start_str, end_str = _dateStringsForEvent(event)
     out = StringIO()
     map = {
@@ -118,29 +120,32 @@ def getICal(event):
             out.write('ATTENDEE;CN="%s":invalid:nomail\n' % vformat(att['name']))
 
     # Recurrency
-    d_map = ['MO','TU','WE','TH','FR','SA','SU']
-    freq = event.frequency
-    if freq != -1:
-        if freq == YEARLY:
-            f_str = 'YEARLY'
-        elif freq == MONTHLY:
-            f_str = 'MONTHLY'
-        elif freq == WEEKLY:
-            f_str = 'WEEKLY'
-        else: 
-            f_str = 'DAILY'
-        days = event.getWeekdays()
-        bysetpos = event.getBysetpos()
-        if days and bysetpos: 
-                d_str = ",".join([d_map[int(i)] for i in days])
-                rrule_str = 'RRULE:FREQ=%s;INTERVAL=%d;BYSETPOS=%s;BYDAY=%s' % (f_str, event.interval,bysetpos, d_str )
-        else: 
-            rrule_str = 'RRULE:FREQ=%s;INTERVAL=%d' % (f_str, event.interval)
+#    if IRecurringEvent.providedBy(event):
+    # ATT: better check interface?
+    if hasattr(event, 'frequency'):    
+        d_map = ['MO','TU','WE','TH','FR','SA','SU']
+        freq = event.getFrequency()
+        if freq != -1:
+            if freq == YEARLY:
+                f_str = 'YEARLY'
+            elif freq == MONTHLY:
+                f_str = 'MONTHLY'
+            elif freq == WEEKLY:
+                f_str = 'WEEKLY'
+            else: 
+                f_str = 'DAILY'
+            days = event.getWeekdays()
+            bysetpos = event.getBysetpos()
+            if days and bysetpos: 
+                    d_str = ",".join([d_map[int(i)] for i in days])
+                    rrule_str = 'RRULE:FREQ=%s;INTERVAL=%d;BYSETPOS=%s;BYDAY=%s' % (f_str, event.interval,bysetpos, d_str )
+            else: 
+                rrule_str = 'RRULE:FREQ=%s;INTERVAL=%d' % (f_str, event.interval)
 
-        if event.until:
-            rrule_str = "%s;UNTIL=%s" %(rrule_str, rfc2445dt(event.until))
+            if event.until:
+                rrule_str = "%s;UNTIL=%s" %(rrule_str, rfc2445dt(event.until))
 
-        out.write("%s\n" % rrule_str) 
+            out.write("%s\n" % rrule_str) 
 
     # Contact information
     cn = []
