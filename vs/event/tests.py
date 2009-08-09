@@ -82,9 +82,15 @@ class VSEventTest(TestBase):
         self.assertEqual(d['to_str'], 'Dec 31, 2009')
         self.assertEqual(d['same_day'], False)
 
-    def testiCal(self):
+    def testiCalVSEvent(self):
         self.login('god')
         self.portal.invokeFactory('VSEvent', id='foo')
+        event = self.portal['foo']
+        data = event.getICal()
+
+    def testiCalVSSubEvent(self):
+        self.login('god')
+        self.portal.invokeFactory('VSSubEvent', id='foo')
         event = self.portal['foo']
         data = event.getICal()
 
