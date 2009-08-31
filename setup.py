@@ -28,6 +28,7 @@ setup(name='vs.event',
           'python-dateutil',
           'dateable.chronos',
           'dateable.kalends',
+          'python-dateutil',
           'Products.DataGridField',
           # -*- Extra requirements: -*-
       ],

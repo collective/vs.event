@@ -17,6 +17,7 @@ from dateable.kalends import IRecurringEvent
 
 from vs.event.config import *
 from vs.event.interfaces import IVSSubEvent
+from vs.event.browser.dtutils import dt2DT
 
 FREQ = {0: 'year',
         1: 'month',
