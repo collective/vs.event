@@ -7,7 +7,7 @@ european_fmt = dict(python_fmt='%d.%m.%Y',
                     jquery_fmt='dd.mm.yy')
 
 us_fmt = dict(python_fmt='%Y/%m/%d',
-                jquery_fmt='yy/mm/dd')
+              jquery_fmt='yy/mm/dd')
 
 language_mapping = {
     'de' : european_fmt,
