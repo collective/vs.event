@@ -22,10 +22,6 @@ $j(document).ready(function() {
         $j('#archetypes-fieldname-endDate').fadeOut();
     }
 
-    // DatePicker stuff
-
-    var UIDateFormat = 'yy/mm/dd';
-    var BackendDateFormat = '%Y/%m/%d';
     // PLONE_LANGUAGE will be defined in vs_calendarwidget.pt
     try {
         language = PLONE_LANGUAGE;
