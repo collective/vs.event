@@ -86,6 +86,7 @@ VSEventSchema = atapi.Schema((
     atapi.IntegerField('frequency',
          schemata="recurrence",
          required=True,
+         i18n_domain = "vs.event",
          vocabulary={-1: u'Does not repeat',
                      YEARLY: u'Yearly',
                      MONTHLY: u'Monthly',
@@ -93,28 +94,34 @@ VSEventSchema = atapi.Schema((
                      DAILY: u'Daily',
                      }.items(),
          default=-1,
-         widget=atapi.SelectionWidget(label=u'Repeats')
+         widget=atapi.SelectionWidget(label='Frequency',
+                                      label_msgid="vs_event_label_frequency",
+                                      i18n_domain="vs.event")
          ),
     atapi.IntegerField('interval',
          schemata="recurrence",
          required=True,
          default=1,
-         widget=atapi.IntegerWidget(label=u'Repeats every',
-              description=u"Repeats every day/week/month/year.")
+         widget=atapi.IntegerWidget(label=u'Interval',
+                                    label_msgid="vs_event_label_interval",
+                                    i18n_domain="vs.event")
          ),
     atapi.DateTimeField('until',
          schemata="recurrence",
-         widget=VSCalendarWidget(description=u"Event repeats until this date.",
-                                 description_msgid = "vs_repeat_events_until_date",
-                                 label="Repeat until",
-                                 label_msgid="vs_label_repeat_until",
+         widget=VSCalendarWidget(label=u"Repeat until",
+                                 label_msgid="vs_event_label_repeat_until",
+                                 description=u"Event repeats until this date.",
+                                 description_msgid = "vs_event_description_repeat__until",
                                  i18n_domain="vs.event",
-                                 with_time=1),
+                                 with_time=1)
          ),
     atapi.IntegerField('count',
           schemata="recurrence",
           widget=atapi.IntegerWidget(label=u'Count',
-                                     description=u'Maxinum number of times the event repeats ',)
+                                     label_msgid="vs_event_label_count",
+                                     description=u"Maxinum number of times the event repeats",
+                                     description_msgid = "vs_event_description_count",
+                                     i18n_domain="vs.event")
           ),
 
 ))

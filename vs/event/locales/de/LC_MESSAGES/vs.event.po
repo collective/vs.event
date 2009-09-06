@@ -10,18 +10,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: ./content/event.py:112
-msgid "Count"
-msgstr "Anzahl"
-
 #. Default: "Edit"
 #: ./profiles/default/types/VSEvent.xml
 #: ./profiles/default/types/VSSubEvent.xml
 msgid "Edit"
 msgstr "Bearbeiten"
-
-msgid "Repeat until"
-msgstr "Terminwiederholung bis"
 
 #: ./content/event.py:107
 msgid "Event repeats until this date"
@@ -59,17 +52,57 @@ msgstr "Bereich"
 msgid "References"
 msgstr "Referenzen"
 
-#: ./content/event.py:95
-msgid "Repeats"
-msgstr "Wiederholungen"
-
 #: ./content/event.py:101
 msgid "Repeats every"
 msgstr "Wiederholt sich"
 
-#: ./content/event.py:102
-msgid "Repeats every day/week/month/year."
-msgstr "Wiederholt sich jeden Tag/Monat/Jahr"
+# Maxinum number of times the event repeats
+#: ./content/event.py: 123
+msgid "vs_event_description_count"
+msgstr "Maximale Anzahl der Wiederholungen"
+
+# Event repeats until this date.
+#: ./content/event.py:114
+msgid "vs_event_description_repeat__until"
+msgstr "Der Termin wiedrholt sich bis zu diesem Datum"
+
+#: ./content/event.py: 73 
+msgid "vs_event_help_bysetpos"
+msgstr "Format: Kommagetrennte Liste von Zahlen. Wenn der Termin z. B. jeweils am ersten und dritten Montag im Monat erscheinen soll, ist hier '1,3' anzugeben und der entsprechende Wochentag auswählen. Und für den letzten Arbeitstag im Monat ist hier '-1' auszuwählen mit den Wochentagen Montag bis Freitag und monatlicher Wiederholung."
+
+#: ./content/event.py: 71 
+msgid "vs_event_label_bysetpos"
+msgstr "Wievieltes Auftreten"
+
+# Count
+#: ./content/event.py: 120
+msgid "vs_event_label_count"
+msgstr "Anzahl"
+
+# Frequency
+#: ./content/event.py: 98
+msgid "vs_event_label_frequency"
+msgstr "Frequenz"
+
+# Interval
+#: ./content/event.py: 106
+msgid "vs_event_label_interval"
+msgstr "Intervall"
+
+# Repeat until
+#: ./content/event.py: 112
+msgid "vs_event_label_repeat_until"
+msgstr "Wiederholung bis"
+
+# Supplementary Events
+#: ./browser/vs_event_view.pt: 179 
+msgid "vs_label_supplementary_events"
+msgstr "Ergänzende Termine"
+
+# This event is a supplementary event to
+#: ./browser/vs_event_view.pt: 38
+msgid "vs_this_is_a_supplementary_event"
+msgstr "Dieser Termin ist ein ergänzender Termin zu"
 
 #. Default: "VSEvent"
 #: ./profiles/default/types/VSEvent.xml

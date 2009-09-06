@@ -35,7 +35,7 @@
         <tal:if tal:condition="isSubEvent">
             <div class="portalMessage info"
                  tal:define="masterEvent view/getMainEvent">
-                <span i18n:translate="vs_this_is_a_supplementary_event">This event is a supplementary event to</span>
+                <span  i18n:domain="vs.event" i18n:translate="vs_this_is_a_supplementary_event">This event is a supplementary event to</span>
                 <a tal:attributes="href masterEvent/absolute_url"
                    tal:content="masterEvent/Title"
                 />

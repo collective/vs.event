@@ -10,10 +10,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: ./content/event.py:112
-msgid "Count"
-msgstr ""
-
 #. Default: "Edit"
 #: ./profiles/default/types/VSEvent.xml
 #: ./profiles/default/types/VSSubEvent.xml
@@ -21,7 +17,7 @@ msgid "Edit"
 msgstr ""
 
 #: ./content/event.py:107
-msgid "Event repeats until this date."
+msgid "Event repeats until this date"
 msgstr ""
 
 #. Default: "External Edit"
@@ -56,16 +52,56 @@ msgstr ""
 msgid "References"
 msgstr ""
 
-#: ./content/event.py:95
-msgid "Repeats"
-msgstr ""
-
 #: ./content/event.py:101
 msgid "Repeats every"
 msgstr ""
 
-#: ./content/event.py:102
-msgid "Repeats every day/week/month/year."
+# Maxinum number of times the event repeats
+#: ./content/event.py: 123
+msgid "vs_event_description_count"
+msgstr ""
+
+# Event repeats until this date.
+#: ./content/event.py:114
+msgid "vs_event_description_repeat__until"
+msgstr ""
+
+#: ./content/event.py: 73 
+msgid "vs_event_help_bysetpos"
+msgstr ""
+
+#: ./content/event.py: 71 
+msgid "vs_event_label_bysetpos"
+msgstr ""
+
+# Count
+#: ./content/event.py: 120
+msgid "vs_event_label_count"
+msgstr ""
+
+# Frequency
+#: ./content/event.py: 98
+msgid "vs_event_label_frequency"
+msgstr ""
+
+# Interval
+#: ./content/event.py: 106
+msgid "vs_event_label_interval"
+msgstr ""
+
+# Repeat until
+#: ./content/event.py: 112
+msgid "vs_event_label_repeat_until"
+msgstr ""
+
+# Supplementary Events
+#: ./browser/vs_event_view.pt: 179 
+msgid "vs_label_supplementary_events"
+msgstr ""
+
+# This event is a supplementary event to
+#: ./browser/vs_event_view.pt: 38
+msgid "vs_this_is_a_supplementary_event"
 msgstr ""
 
 #. Default: "VSEvent"
@@ -215,4 +251,23 @@ msgstr ""
 #: ./content/event.py:58
 msgid "vs_label_so"
 msgstr ""
+
+msgid "Yearly"
+msgstr ""
+
+msgid "Monthly"
+msgstr ""
+
+msgid "Weekly"
+msgstr ""
+
+msgid "Daily"
+msgstr ""
+
+msgid "Does not repeat"
+msgstr ""
+
+msgid "Event URL"
+msgstr ""
+
 
