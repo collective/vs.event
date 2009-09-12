@@ -206,6 +206,7 @@ def modifyEventSchema(schema):
                                     'show':     CheckboxColumn(_(u'vs_event_label_showColumn')),
                                 }),
                             ))
+    schema.moveField('attendees', after='count')
     return schema
 
 class VSEvent(ATEvent):
