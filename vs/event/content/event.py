@@ -22,7 +22,7 @@ from vs.event.config import *
 from vs.event.interfaces import IVSEvent, IVSSubEvent
 from vs.event import MessageFactory as _
 from vs.event import validators 
-from vs.event.fieldsandwidgets.calendarwidget import VSCalendarWidget
+from collective.calendarwidget.widget import CalendarWidget
 import event_util
 
 try:
@@ -108,7 +108,7 @@ VSEventSchema = atapi.Schema((
          ),
     atapi.DateTimeField('until',
          schemata="recurrence",
-         widget=VSCalendarWidget(label=u"Repeat until",
+         widget=CalendarWidget(label=u"Repeat until",
                                  label_msgid="vs_event_label_repeat_until",
                                  description=u"Event repeats until this date.",
                                  description_msgid = "vs_event_description_repeat__until",
@@ -148,7 +148,7 @@ def modifyEventSchema(schema):
                                        ))
     schema.moveField('wholeDay', before='startDate')
     schema.moveField('useEndDate', after='wholeDay')
-    schema['startDate'].widget = VSCalendarWidget(description= "",
+    schema['startDate'].widget = CalendarWidget(description= "",
                                                 description_msgid = "help_event_start",
                                                 label="Event Starts",
                                                 label_msgid = "label_event_start",
@@ -158,7 +158,7 @@ def modifyEventSchema(schema):
                                                 js_shortcuts=0,
                                                 ignore_unset_time=1)
 
-    schema['endDate'].widget = VSCalendarWidget(description = "",
+    schema['endDate'].widget = CalendarWidget(description = "",
                                               description_msgid = "help_event_end",
                                               label = "Event Ends",
                                               label_msgid = "label_event_end",
@@ -171,7 +171,7 @@ def modifyEventSchema(schema):
     del schema['until']
     schema.addField(atapi.DateTimeField('until',
                                  schemata='recurrence',
-                                 widget=VSCalendarWidget(description=u"Event repeats until this date",
+                                 widget=CalendarWidget(description=u"Event repeats until this date",
                                  description_msgid="vs_repeat_events_until_date",
                                  label="Repeat until",
                                  label_msgid="vs_label_repeat_until",
@@ -288,7 +288,7 @@ def modifySubEventSchema(schema):
     schema.moveField('wholeDay', before='startDate')
     schema.moveField('useEndDate', after='wholeDay')
 
-    schema['startDate'].widget = VSCalendarWidget(description= "",
+    schema['startDate'].widget = CalendarWidget(description= "",
                                                 description_msgid = "help_event_start",
                                                 label="Event Starts",
                                                 label_msgid = "label_event_start",
@@ -298,7 +298,7 @@ def modifySubEventSchema(schema):
                                                 js_shortcuts=0,
                                                 ignore_unset_time=1)
 
-    schema['endDate'].widget = VSCalendarWidget(description = "",
+    schema['endDate'].widget = CalendarWidget(description = "",
                                               description_msgid = "help_event_end",
                                               label = "Event Ends",
                                               label_msgid = "label_event_end",

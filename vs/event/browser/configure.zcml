@@ -50,17 +50,7 @@
         file="vs-event.js"
         permission="zope.Public"
         />
-    <browser:resource
-        name="jquery-ui-custom.js"
-        file="jquery-ui-custom.js"
-        permission="zope.Public"
-        />
 
-    <browser:resource
-        name="datepicker.css"
-        file="datepicker.css"
-        permission="zope.Public"
-        />
     <browser:resource
         name="vs-event.css"
         file="vs-event.css"
