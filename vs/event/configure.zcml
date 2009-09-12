@@ -8,7 +8,6 @@
     i18n_domain="vs.event">
 
     <five:registerPackage package="." initialize=".initialize" />
-    <cmf:registerDirectory name="vs_calendarwidget"/>
 
     <genericsetup:registerProfile
         name="default"
