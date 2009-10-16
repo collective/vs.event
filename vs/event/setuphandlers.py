@@ -28,7 +28,8 @@ class Generator(object):
             if not id in types:
                 types.append(id)
         tool.calendar_types = tuple(types)
-        tool.manage_addProperty('vs_event_supplementary_events', True, 'boolean')
+        if not tool.hasProperty('vs_event_supplementary_events'):
+            tool.manage_addProperty('vs_event_supplementary_events', True, 'boolean')
         print >> out, "VSEvent types for Calendar activated \n" 
 
 
