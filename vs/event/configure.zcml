@@ -8,7 +8,8 @@
     i18n_domain="vs.event">
 
     <five:registerPackage package="." initialize=".initialize" />
-
+    <include package="collective.calendarwidget" />
+    
     <genericsetup:registerProfile
         name="default"
         title="vs.event"
