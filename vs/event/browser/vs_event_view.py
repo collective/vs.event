@@ -18,14 +18,15 @@ from dateable.kalends import IRecurringEvent
 from vs.event.config import *
 from vs.event.interfaces import IVSSubEvent
 from vs.event.browser.dtutils import dt2DT
+from vs.event import MessageFactory as _
 
-FREQ = {0: 'year',
-        1: 'month',
-        2: 'week',
-        3: 'day',
-        4: 'hour',
-        5: 'minute',
-        6: 'second',
+FREQ = {0: _('year'),
+        1: _('month'),
+        2: _('week'),
+        3: _('day'),
+        4: _('hour'),
+        5: _('minute'),
+        6: _('second'),
     }
 
 class VSEventView(BrowserView):
@@ -78,13 +79,17 @@ class VSEventView(BrowserView):
         rrule = self.rrule()
         if rrule is None:
             return ''
+            
+        # mapping can't be in translate() method (actually, it can, but translation does not work).
+        mapping={'interval':rrule._interval, 
+                 'frequency':FREQ[rrule._freq]}
         if rrule._interval == 1:
-            text = u"Every ${frequency}"
+            text = _(u"vs_text_every_freq", u"Every ${frequency}", mapping)
         else:
-            text = u"Every ${interval} ${frequency}s"
+            text = _(u"vs_text_every_interval_freq", u"Every ${interval}. ${frequency}s", mapping)
 
-        return translate(text, mapping={'interval':rrule._interval, 
-                                        'frequency':FREQ[rrule._freq]})
+        return translate(text)
+        
     def rrule_interval(self):
         rrule = self.rrule()
         if rrule is not None:
@@ -96,6 +101,7 @@ class VSEventView(BrowserView):
         if rrule is not None and rrule._until:
             return self.context.toLocalizedTime(dt2DT(rrule._until), long_format=0)
         return ''
+
     @memoize    
     def filteredAttendees(self):
         """ return list of attendees with 'show' flag set """
@@ -105,7 +111,6 @@ class VSEventView(BrowserView):
             if attendee['show']:
                 result.append(attendee)
         return result
-
 
     def getMainEvent(self):
         """ return the main event from the list of backrefs """

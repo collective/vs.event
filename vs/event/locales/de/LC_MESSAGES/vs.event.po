@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: vs.event\n"
-"POT-Creation-Date: 2009-10-16 07:24+0000\n"
+"POT-Creation-Date: 2009-10-16 08:56+0000\n"
 "PO-Revision-Date: 2009-07-22 10:12+0100\n"
 "Last-Translator: aj <yet@gmx.de>\n"
 "Language-Team: Deutsch <vs.event@veit-schiele.de>\n"
@@ -76,6 +76,14 @@ msgstr "Wöchentlich"
 msgid "Yearly"
 msgstr "Jährlich"
 
+#: ./browser/vs_event_view.py:26
+msgid "day"
+msgstr ""
+
+#: ./browser/vs_event_view.py:27
+msgid "hour"
+msgstr ""
+
 #. Default: "iCalendar"
 #: ./profiles/default/types/VSEvent.xml
 #: ./profiles/default/types/VSSubEvent.xml
@@ -101,6 +109,18 @@ msgstr "Enddatum verwenden?"
 #: ./content/event.py:133
 msgid "label_whole_day_event"
 msgstr "Ganztägiger Termin"
+
+#: ./browser/vs_event_view.py:28
+msgid "minute"
+msgstr ""
+
+#: ./browser/vs_event_view.py:24
+msgid "month"
+msgstr ""
+
+#: ./browser/vs_event_view.py:29
+msgid "second"
+msgstr ""
 
 #. Default: "vCalendar"
 #: ./profiles/default/types/VSEvent.xml
@@ -284,9 +304,27 @@ msgstr ""
 msgid "vs_subscription_url"
 msgstr ""
 
+#. Default: "Every ${frequency}"
+#: ./browser/vs_event_view.py:83
+msgid "vs_text_every_freq"
+msgstr ""
+
+#. Default: "Every ${interval}. ${frequency}s"
+#: ./browser/vs_event_view.py:85
+msgid "vs_text_every_interval_freq"
+msgstr ""
+
 # This event is a supplementary event to
 #. Default: "This event is a supplementary event to"
 #: ./browser/vs_event_view.pt:38
 msgid "vs_this_is_a_supplementary_event"
 msgstr "Dieser Termin ist ein ergänzender Termin zu"
+
+#: ./browser/vs_event_view.py:25
+msgid "week"
+msgstr ""
+
+#: ./browser/vs_event_view.py:23
+msgid "year"
+msgstr ""
 
