@@ -172,9 +172,9 @@ def modifyEventSchema(schema):
     schema.addField(atapi.DateTimeField('until',
                                  schemata='recurrence',
                                  widget=VSCalendarWidget(description=u"Event repeats until this date",
-                                 description_msgid="vs_repeat_events_until_date",
+                                 description_msgid="vs_event_event_repeats_until_date",
                                  label="Repeat until",
-                                 label_msgid="vs_label_repeat_until",
+                                 label_msgid="vs_event_label_repeat_until",
                                  i18n_domain="vs.event",
                                  with_time=1)))
 

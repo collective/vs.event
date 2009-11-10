@@ -17,7 +17,7 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 #: ./content/event.py:107
-msgid "Event repeats until this date"
+msgid "vs_event_event_repeats_until_date"
 msgstr "Der Termin wiederholt sich bis zu diesem Datum."
 
 #. Default: "External Edit"
