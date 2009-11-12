@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.2.21 - (2009/11/12)
+---------------------
+
+* fixed Plone 3.3 compatibility issue (condition/expression 
+  parameter in jsregistery.xml)
 
 0.2.20 - (2009/11/10)
 ---------------------

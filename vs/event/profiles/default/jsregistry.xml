@@ -3,10 +3,10 @@
     
  <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True"
-    condition="python: object.meta_type in ('IDGEvent', 'VSEvent')"
+    expression="python: object.meta_type in ('IDGEvent', 'VSEvent')"
     id="++resource++jquery-ui-custom.js" inline="False"/>
  <javascript cacheable="True" compression="safe" cookable="False"
     enabled="True"
-    condition="python: object.meta_type in ('IDGEvent', 'VSEvent')"
+    expression="python: object.meta_type in ('IDGEvent', 'VSEvent')"
     id="++resource++vs-event.js" inline="False"/>
 </object>
