@@ -30,6 +30,7 @@ setup(name='vs.event',
           'dateable.kalends',
           'python-dateutil',
           'Products.DataGridField',
+          'zope.app.annotation',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
