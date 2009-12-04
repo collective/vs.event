@@ -21,7 +21,7 @@ from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
 from vs.event.config import *
 from vs.event.interfaces import IVSEvent, IVSSubEvent
 from vs.event import MessageFactory as _
-from vs.event import validators 
+from vs.event import validators
 from vs.event.fieldsandwidgets.calendarwidget import VSCalendarWidget
 import event_util
 
@@ -44,7 +44,7 @@ VSEventSchema = atapi.Schema((
         widget=ReferenceBrowserWidget(
             visible={'view': 'invisible', 'edit':'invisible'},
         ),
-    ), 
+    ),
     atapi.LinesField(
         name='weekdays',
         schemata='recurrence',
@@ -55,7 +55,7 @@ VSEventSchema = atapi.Schema((
             ('3', _(u'vs_label_do')),
             ('4', _(u'vs_label_fr')),
             ('5', _(u'vs_label_sa')),
-            ('6', _(u'vs_label_so')) 
+            ('6', _(u'vs_label_so'))
         )),
         widget=atapi.MultiSelectionWidget(
             format="checkbox",
@@ -191,7 +191,7 @@ def modifyEventSchema(schema):
                                     label='Attachments',
                                     label_msgid='vs_event_label_attachments',
                                 ),
-                            )) 
+                            ))
 
     del schema['attendees']
     schema.addField(DataGridField(name="attendees",
@@ -248,8 +248,8 @@ class VSEvent(ATEvent):
             ('chair',_(u'vs_event_label_chair')),
             ('observer',_(u'vs_event_label_observer')),
             ('participant',_(u'vs_event_label_participant')),
-            ('opt_participant',_(u'vs_event_label_opt_participant')), 
-        )) 
+            ('opt_participant',_(u'vs_event_label_opt_participant')),
+        ))
 
     security.declareProtected(View, 'post_validate')
     def post_validate(self, REQUEST=None, errors=None):
@@ -257,7 +257,7 @@ class VSEvent(ATEvent):
             dates having an end date.
         """
         if REQUEST.get('useEndDate', True) == True:
-            return super(VSEvent, self).post_validate(REQUEST=REQUEST, 
+            return super(VSEvent, self).post_validate(REQUEST=REQUEST,
                                                       errors=errors)
 
 atapi.registerType(VSEvent, PROJECTNAME)
@@ -265,6 +265,10 @@ atapi.registerType(VSEvent, PROJECTNAME)
 
 def modifySubEventSchema(schema):
     # remove unwanted fields for subevents
+
+    # PLONE 4 seems not to have a eventType field anymore, so it must be
+    # excluded here for compatibility
+    # for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone', 'eventUrl'):
     for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone', 'eventType', 'eventUrl'):
         schema[id].widget.visible = False
     for field in schema.fields():
