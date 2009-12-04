@@ -1,15 +1,16 @@
 ################################################################
 # vs.event - published under the GPL 2
-# Authors: Andreas Jung, Veit Schiele, Anne Walther 
+# Authors: Andreas Jung, Veit Schiele, Anne Walther
 ################################################################
 
 import re
 from Products.validation import validation
 from Products.validation.interfaces.IValidator import IValidator
 from Products.validation.validators.RegexValidator import RegexValidator
+from zope.interface import implements
 
 class VSLinesOfDateValidator:
-    __implements__ = IValidator
+    implements(IValidator)
 
     def __init__(self, name, title='', description=''):
         self.name = name
@@ -44,4 +45,3 @@ validators = [
 
 for validator in validators:
     validation.register(validator)
-         
