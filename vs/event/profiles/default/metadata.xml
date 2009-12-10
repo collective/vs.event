@@ -1,9 +1,7 @@
-<?xml version="1.0"?> 
-<metadata> 
-    <version>1.0</version> 
-<!--
-    <dependencies>
-        <dependency>profile-vs.org:default</dependency>
-    </dependencies>
--->
-</metadata> 
+<?xml version="1.0"?>
+<metadata>
+  <dependencies>
+    <dependency>profile-Products.DataGridField:default</dependency>
+    <!-- dependency>profile-dateable.chronos:default</dependency -->
+  </dependencies>
+</metadata>
