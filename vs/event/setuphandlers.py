@@ -6,20 +6,10 @@
 ################################################################
 
 from StringIO import StringIO
-from config import PROJECTNAME, DEPENDENCIES
+from config import PROJECTNAME
 from Products.CMFCore.utils import getToolByName
 
 class Generator(object):
-
-    def installProducts(self, p, out):
-        """QuickInstaller install of required Products"""
-        qi = getToolByName(p, 'portal_quickinstaller')
-        for product in DEPENDENCIES:
-            if qi.isProductInstalled(product):
-                qi.reinstallProducts([product])
-            else:
-                qi.installProduct(product, locked=0)
-                print >> out, "Product installed: %s \n" %product
 
     def setCalendarProperties(self, p, out):
         tool = getToolByName(p , 'portal_calendar')
@@ -32,7 +22,7 @@ class Generator(object):
             tool.manage_addProperty('vs_event_supplementary_events', True, 'boolean')
         except:
             pass
-        print >> out, "VSEvent types for Calendar activated \n" 
+        print >> out, "VSEvent types for Calendar activated \n"
 
 
 def setupVarious(context):
@@ -43,7 +33,6 @@ def setupVarious(context):
     out = StringIO()
     site = context.getSite()
     gen = Generator()
-    gen.installProducts(site, out)
     gen.setCalendarProperties(site, out)
     logger = context.getLogger(PROJECTNAME)
     logger.info(out.getvalue())
