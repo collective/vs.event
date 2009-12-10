@@ -7,6 +7,5 @@
 
 PROJECTNAME = "vs.event"
 DEPENDENCIES=['dateable.chronos',
-              'DataGridField',
-              'p4a.plonevent']
+              'DataGridField']
 
