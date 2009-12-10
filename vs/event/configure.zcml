@@ -7,6 +7,9 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="vs.event">
 
+    <include package="Products.DataGridField" />
+    <!-- include package="dateable.chronos" /-->
+
     <five:registerPackage package="." initialize=".initialize" />
     <cmf:registerDirectory name="vs_calendarwidget"/>
 
@@ -17,9 +20,9 @@
         description="vs.event extensions for plone"
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
-    
+
     <include package=".browser" />
     <include package=".content" />
-    <i18n:registerTranslations directory="locales" />     
+    <i18n:registerTranslations directory="locales" />
 
 </configure>
