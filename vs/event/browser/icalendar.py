@@ -1,11 +1,11 @@
 ################################################################
 # vs.event - published under the GPL 2
-# Authors: Andreas Jung, Veit Schiele, Anne Walther 
+# Authors: Andreas Jung, Veit Schiele, Anne Walther
 ################################################################
 
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Globals import InitializeClass
+from App.class_init import InitializeClass
 
 class iCalendarView(BrowserView):
     """ ICal export"""
