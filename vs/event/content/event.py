@@ -15,7 +15,13 @@ from Products.DataGridField.SelectColumn import SelectColumn
 from Products.DataGridField.CheckboxColumn import CheckboxColumn
 
 from Products.CMFCore.permissions import View
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+
+try:
+    from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
+except ImportError:
+    from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget\
+         import ReferenceBrowserWidget
+
 from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
 
 from vs.event.config import *
