@@ -2,11 +2,11 @@
 
 ################################################################
 # vs.event - published under the GPL 2
-# Authors: Andreas Jung, Veit Schiele, Anne Walther 
+# Authors: Andreas Jung, Veit Schiele, Anne Walther
 ################################################################
 
 import time
-from Globals import InitializeClass
+from App.class_init import InitializeClass
 from AccessControl import ClassSecurityInfo
 from DateTime.DateTime import DateTime
 from Products.Archetypes.public import CalendarWidget
