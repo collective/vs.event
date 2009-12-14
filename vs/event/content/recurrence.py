@@ -6,7 +6,7 @@ from dateutil import rrule
 from zope import interface
 from zope import component
 from zope import schema
-from zope.app.annotation import interfaces as annointerfaces
+from zope.annotation import interfaces as annointerfaces
 from dateable import kalends
 from dateutil.rrule import MO, TU, WE, TH, FR, SA, SU
 from dtutils import DT2dt
@@ -19,7 +19,7 @@ wdays = [MO, TU, WE, TH, FR, SA, SU]
 class IRecurrenceConfig(interface.Interface):
     """Configuration information for an event.
     """
-    
+
     is_recurring = schema.Bool(
         title=u'Recurring event',
         description=u'This event recurs'
@@ -27,10 +27,10 @@ class IRecurrenceConfig(interface.Interface):
 
 class VSRecurrenceSupport(object):
     """Recurrence support"""
-    
+
     interface.implements(kalends.IRecurrence)
     component.adapts(VSEvent)
-    
+
     def __init__(self, context):
         self.context = context
 
@@ -38,7 +38,7 @@ class VSRecurrenceSupport(object):
         """Returns a dateutil.rrule"""
         if getattr(self.context, 'frequency', -1) is -1:
             return None
-        
+
         dtstart = DT2dt(self.context.startDate)
         if self.context.until is not None:
             until = DT2dt(self.context.until)
@@ -51,16 +51,16 @@ class VSRecurrenceSupport(object):
         bysetpos = None
         for i in indizies:
             days.append(wdays[i])
-        
+
         if self.context.getBysetpos():
-            bysetpos = [int(i) for i in self.context.getBysetpos().split(',')] 
-                
+            bysetpos = [int(i) for i in self.context.getBysetpos().split(',')]
+
         rule = rrule.rrule(self.context.frequency,
                        dtstart=dtstart,
                        interval=self.context.interval,
-                       #wkst=None, 
-                       count=self.context.count, 
-                       until=until, 
+                       #wkst=None,
+                       count=self.context.count,
+                       until=until,
                        # byweekday=days,
                        # bysetpos=self.context.getBysetpos(),
                        #bysetpos=None,
@@ -73,9 +73,9 @@ class VSRecurrenceSupport(object):
             rule = rrule.rrule(self.context.frequency,
                            dtstart=dtstart,
                            interval=self.context.interval,
-                           #wkst=None, 
-                           count=self.context.count, 
-                           until=until, 
+                           #wkst=None,
+                           count=self.context.count,
+                           until=until,
                            byweekday=days,
                            bysetpos=bysetpos,
                            #bysetpos=None,
@@ -84,8 +84,8 @@ class VSRecurrenceSupport(object):
                            #byhour=None, byminute=None, bysecond=None,
                            #cache=False
                        )
-        
-        
+
+
         return rule
 
     def getOccurrenceDays(self, until=None):
@@ -100,13 +100,13 @@ class VSRecurrenceSupport(object):
 
         if until.tzinfo is None and rule._dtstart.tzinfo is not None:
             until = until.replace(tzinfo=rule._dtstart.tzinfo)
-            
+
         if until.tzinfo is not None and rule._dtstart.tzinfo is None:
             until = until.replace(tzinfo=None)
-                            
+
         if rule._until is None or rule._until > until:
             rule._until = until
-        
+
         to_exclude = self.context.getExceptions()
         return [x.date().toordinal() for x in rule if x.date().strftime('%Y-%m-%d') not in to_exclude ][1:]
 
@@ -114,7 +114,7 @@ class VSRecurrenceSupport(object):
 class EventRecurrenceConfig(object):
     """An IRecurrenceConfig adapter for events.
     """
-    
+
     interface.implements(IRecurrenceConfig)
     component.adapts(VSEvent)
 
