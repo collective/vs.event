@@ -5,7 +5,7 @@
 
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Globals import InitializeClass
+from App.class_init import InitializeClass
 from vs.event.config import *
 from vs.event.content import event_util
 import random
@@ -31,7 +31,7 @@ class VSView(BrowserView):
         self.request.response.redirect(event.absolute_url() + '/edit')
 
     def date_for_display(self):
-        """ Return dict containing pre-calculated information for 
+        """ Return dict containing pre-calculated information for
             building a <start>-<end> date string.
         """
         return event_util.date_for_display(self.context)
