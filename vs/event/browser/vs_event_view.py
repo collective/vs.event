@@ -4,11 +4,11 @@
 ################################################################
 
 from plone.memoize.instance import memoize
-from datetime import date 
+from datetime import date
 from dateable.kalends import IRecurrence
 from dateutil.parser import parse
 from zope.i18n import translate
-from Globals import InitializeClass
+from App.class_init import InitializeClass
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from AccessControl import getSecurityManager
@@ -36,16 +36,16 @@ class VSEventView(BrowserView):
 
     def short_start_date(self):
         return self.context.toLocalizedTime(self.context.start(), long_format=0)
-        
+
     def long_start_date(self):
         return self.context.toLocalizedTime(self.context.start(), long_format=1)
-    
+
     def start_time(self):
         return self.context.start().strftime(self.time_format())
 
     def short_end_date(self):
         return self.context.toLocalizedTime(self.context.end(), long_format=0)
-    
+
     def long_end_date(self):
         return self.context.toLocalizedTime(self.context.end(), long_format=1)
 
@@ -59,7 +59,7 @@ class VSEventView(BrowserView):
     def date_format(self):
         site_properties = self.context.portal_properties.site_properties
         return site_properties.getProperty('localTimeFormat')
-    
+
     def time_format(self):
         datetime_format = self.datetime_format()
         if '%p' in datetime_format:
@@ -83,20 +83,20 @@ class VSEventView(BrowserView):
         else:
             text = u"Every ${interval} ${frequency}s"
 
-        return translate(text, mapping={'interval':rrule._interval, 
+        return translate(text, mapping={'interval':rrule._interval,
                                         'frequency':FREQ[rrule._freq]})
     def rrule_interval(self):
         rrule = self.rrule()
         if rrule is not None:
             return rrule._interval
         return 0
-        
+
     def rrule_end(self):
         rrule = self.rrule()
         if rrule is not None and rrule._until:
             return self.context.toLocalizedTime(dt2DT(rrule._until), long_format=0)
         return ''
-    @memoize    
+    @memoize
     def filteredAttendees(self):
         """ return list of attendees with 'show' flag set """
         attendees = self.context.getAttendees()
@@ -128,7 +128,7 @@ class VSEventView(BrowserView):
     def nextDates(self):
         """ Recurrence """
         return [ date.fromordinal(x) for x in IRecurrence(self.context, None).getOccurrenceDays()]
- 
+
     @memoize
     def getExceptions(self):
         """ get recurrence exceptions """
