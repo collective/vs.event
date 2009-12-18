@@ -24,7 +24,7 @@ except ImportError:
 
 from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
 
-from vs.event.config import *
+from vs.event.config import PROJECTNAME
 from vs.event.interfaces import IVSEvent, IVSSubEvent
 from vs.event import MessageFactory as _
 from vs.event import validators
@@ -89,16 +89,18 @@ VSEventSchema = atapi.Schema((
         ),
     ),
 
+    # DisplayField does not allow integers as keys. todo: check this.
     atapi.IntegerField('frequency',
          schemata="recurrence",
          required=True,
          i18n_domain = "vs.event",
-         vocabulary={-1: u'Does not repeat',
-                     YEARLY: u'Yearly',
-                     MONTHLY: u'Monthly',
-                     WEEKLY: u'Weekly',
-                     DAILY: u'Daily',
-                     }.items(),
+         vocabulary=atapi.IntDisplayList((
+            (-1, _(u'Does not repeat')),
+            (YEARLY, _(u'Yearly')),
+            (MONTHLY, _(u'Monthly')),
+            (WEEKLY, _(u'Weekly')),
+            (DAILY, _(u'Daily'))
+        )),
          default=-1,
          widget=atapi.SelectionWidget(label='Frequency',
                                       label_msgid="vs_event_label_frequency",
