@@ -1,17 +1,29 @@
 ################################################################
 # vs.event - published under the GPL 2
-# Authors: Andreas Jung, Veit Schiele, Anne Walther
+# Authors: Andreas Jung, Veit Schiele, Anne Walther 
 ################################################################
 
 import re
+from zope.interface import implements
 from Products.validation import validation
 from Products.validation.interfaces.IValidator import IValidator
 from Products.validation.validators.RegexValidator import RegexValidator
-from zope.interface import implements
+
+try: 
+    # Plone 4 and higher 
+    import plone.app.upgrade 
+    USE_BBB_VALIDATORS = False 
+except ImportError: 
+    # BBB Plone 3 
+    USE_BBB_VALIDATORS = True 
 
 class VSLinesOfDateValidator:
-    implements(IValidator)
-
+	
+    if USE_BBB_VALIDATORS: 
+        __implements__ = (IValidator,) 
+    else: 
+        implements(IValidator)
+ 	
     def __init__(self, name, title='', description=''):
         self.name = name
         self.title = title or name
@@ -45,3 +57,4 @@ validators = [
 
 for validator in validators:
     validation.register(validator)
+         
