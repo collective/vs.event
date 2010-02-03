@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: vs.event\n"
-"POT-Creation-Date: 2009-06-20 08:52+0000\n"
+"POT-Creation-Date: 2009-10-16 07:24+0000\n"
 "PO-Revision-Date: 2009-07-22 10:12+0100\n"
 "Last-Translator: aj <yet@gmx.de>\n"
 "Language-Team: Deutsch <vs.event@veit-schiele.de>\n"
@@ -9,6 +9,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ./content/event.py:98
+msgid "Daily"
+msgstr "Täglich"
+
+#: ./content/event.py:94
+msgid "Does not repeat"
+msgstr "Keine Wiederholung"
 
 #. Default: "Edit"
 #: ./profiles/default/types/VSEvent.xml
@@ -38,13 +50,9 @@ msgstr "Historie"
 msgid "Information about an upcoming event, which can be displayed in the calendar."
 msgstr "Informationen über einen kommenden Termin, der im Kalender angezeigt werden kann."
 
-#: ./content/event.py:113
-msgid "Maxinum number of times the event repeats "
-msgstr "Maximale Anzahl von Wiederholungen des Termins."
-
-#: ./content/event.py:106
-msgid "Range"
-msgstr "Bereich"
+#: ./content/event.py:96
+msgid "Monthly"
+msgstr "Monatlich"
 
 #. Default: "References"
 #: ./profiles/default/types/VSEvent.xml
@@ -52,73 +60,19 @@ msgstr "Bereich"
 msgid "References"
 msgstr "Referenzen"
 
-#: ./content/event.py:101
-msgid "Repeats every"
-msgstr "Wiederholt sich"
-
-# Maxinum number of times the event repeats
-#: ./content/event.py: 123
-msgid "vs_event_description_count"
-msgstr "Maximale Anzahl der Wiederholungen"
-
-# Event repeats until this date.
-#: ./content/event.py:114
-msgid "vs_event_description_repeat__until"
-msgstr "Der Termin wiedrholt sich bis zu diesem Datum"
-
-#: ./content/event.py: 73 
-msgid "vs_event_help_bysetpos"
-msgstr "Format: Kommagetrennte Liste von Zahlen. Wenn der Termin z. B. jeweils am ersten und dritten Montag im Monat erscheinen soll, ist hier '1,3' anzugeben und der entsprechende Wochentag auswählen. Und für den letzten Arbeitstag im Monat ist hier '-1' auszuwählen mit den Wochentagen Montag bis Freitag und monatlicher Wiederholung."
-
-#: ./content/event.py: 71 
-msgid "vs_event_label_bysetpos"
-msgstr "Wievieltes Auftreten"
-
-# Count
-#: ./content/event.py: 120
-msgid "vs_event_label_count"
-msgstr "Anzahl"
-
-# Frequency
-#: ./content/event.py: 98
-msgid "vs_event_label_frequency"
-msgstr "Frequenz"
-
-# Interval
-#: ./content/event.py: 106
-msgid "vs_event_label_interval"
-msgstr "Intervall"
-
-# Repeat until
-#: ./content/event.py: 112
-msgid "vs_event_label_repeat_until"
-msgstr "Wiederholung bis"
-
-# Supplementary Events
-#: ./browser/vs_event_view.pt: 179 
-msgid "vs_label_supplementary_events"
-msgstr "Ergänzende Termine"
-
-# This event is a supplementary event to
-#: ./browser/vs_event_view.pt: 38
-msgid "vs_this_is_a_supplementary_event"
-msgstr "Dieser Termin ist ein ergänzender Termin zu"
-
-#. Default: "VSEvent"
-#: ./profiles/default/types/VSEvent.xml
-msgid "VSEvent"
-msgstr "VSEvent"
-
-#. Default: "VSSubEvent"
-#: ./profiles/default/types/VSSubEvent.xml
-msgid "VSSubEvent"
-msgstr "VSSubEvent"
-
 #. Default: "View"
 #: ./profiles/default/types/VSEvent.xml
 #: ./profiles/default/types/VSSubEvent.xml
 msgid "View"
 msgstr "Ansicht"
+
+#: ./content/event.py:97
+msgid "Weekly"
+msgstr "Wöchentlich"
+
+#: ./content/event.py:95
+msgid "Yearly"
+msgstr "Jährlich"
 
 #. Default: "iCalendar"
 #: ./profiles/default/types/VSEvent.xml
@@ -126,24 +80,23 @@ msgstr "Ansicht"
 msgid "iCalendar"
 msgstr "iCalendar"
 
-#: ./content/event.py:151
+#. Default: "Event Ends"
+#: ./content/event.py:150
 msgid "label_event_end"
 msgstr "Der Termin endet am"
 
-#: ./content/event.py:142
+#. Default: "Event Starts"
+#: ./content/event.py:144
 msgid "label_event_start"
 msgstr "Der Termin beginnt am"
 
-#. Default: "hour"
-#: ./skins/vs_calendarwidget/vs_calendarwidget.pt:66
-msgid "label_hour"
-msgstr "Uhr"
-
-#: ./content/event.py:134
+#. Default: "Use end date?"
+#: ./content/event.py:139
 msgid "label_use_end_date"
 msgstr "Enddatum verwenden?"
 
-#: ./content/event.py:126
+#. Default: "Whole day event"
+#: ./content/event.py:133
 msgid "label_whole_day_event"
 msgstr "Ganztägiger Termin"
 
@@ -153,14 +106,29 @@ msgstr "Ganztägiger Termin"
 msgid "vCalendar"
 msgstr "vCalendar"
 
-#: ./content/event.py:81
+# Maxinum number of times the event repeats
+#. Default: "Maxinum number of times the event repeats"
+#: ./content/event.py:120
+msgid "vs_event_description_count"
+msgstr "Maximale Anzahl der Wiederholungen"
+
+# Event repeats until this date.
+#. Default: "Event repeats until this date."
+#: ./content/event.py:114
+msgid "vs_event_description_repeat__until"
+msgstr "Der Termin wiedrholt sich bis zu diesem Datum"
+
+#. Default: "Comma separated list of numbers. If this event is on first and third Monday of the month, enter \"1,3\" and select appropriate day of the week above. For the last day of the month, enter \"-1\", select Monday through Friday above and monthly recurrence."
+#: ./content/event.py:72
+msgid "vs_event_help_bysetpos"
+msgstr "Format: Kommagetrennte Liste von Zahlen. Wenn der Termin z. B. jeweils am ersten und dritten Montag im Monat erscheinen soll, ist hier '1,3' anzugeben und der entsprechende Wochentag auswählen. Und für den letzten Arbeitstag im Monat ist hier '-1' auszuwählen mit den Wochentagen Montag bis Freitag und monatlicher Wiederholung."
+
+#. Default: "Please enter exceptions to recurrence. One date per line in format YYYY-MM-DD"
+#: ./content/event.py:86
 msgid "vs_event_help_exceptions"
 msgstr "Je ein Datum pro Zeile im Format YYYY-MM-DD"
 
-#: ./content/event.py:72
-msgid "vs_event_help_interval"
-msgstr "Kommagetrennte Liste von Zahlen. Wenn der Termin z. B. jeweils am ersten und dritten Montag im Monat erscheinen soll, dann wird hier '1,3' angeigeben und der entsprechende Wochentag ausgewählt. Und für den letzten Tag im Monat wird hier '-1' ausgewählt mit den Wochentagen Montag bis Freitag und monatlicher Wiederholung."
-
+#. Default: "Select weekdays"
 #: ./content/event.py:63
 msgid "vs_event_help_weekdays"
 msgstr "Auftreten des Termins an einem oder mehreren Wochentagen."
@@ -170,51 +138,85 @@ msgstr "Auftreten des Termins an einem oder mehreren Wochentagen."
 msgid "vs_event_label_attachments"
 msgstr "Anhänge"
 
-#: ./content/event.py:218
+#. Default: "Occurrence"
+#: ./content/event.py:71
+msgid "vs_event_label_bysetpos"
+msgstr "Wievieltes Auftreten"
+
+#. Default: "Chair"
+#: ./content/event.py:229
 msgid "vs_event_label_chair"
 msgstr "Vorsitzender"
+
+# Count
+#. Default: "Count"
+#: ./content/event.py:119
+msgid "vs_event_label_count"
+msgstr "Anzahl"
 
 #. Default: "exceptions"
 #: ./browser/vs_event_view.pt:91
 msgid "vs_event_label_exceptions"
 msgstr "Ausnahmen"
 
-#: ./content/event.py:71
+# Frequency
+#. Default: "Frequency"
+#: ./content/event.py:101
+msgid "vs_event_label_frequency"
+msgstr "Frequenz"
+
+#. Default: "Interval"
+#: ./content/event.py:108
 msgid "vs_event_label_interval"
 msgstr "Intervall"
 
-#: ./content/event.py:177
+#. Default: "e-Mail"
+#: ./content/event.py:184
 msgid "vs_event_label_mailColumn"
 msgstr "E-Mail"
 
-#: ./content/event.py:176
+#. Default: "Name"
+#: ./content/event.py:183
 msgid "vs_event_label_nameColumn"
 msgstr "Name"
 
-#: ./content/event.py:219
+#. Default: "Observer"
+#: ./content/event.py:230
 msgid "vs_event_label_observer"
 msgstr "Zuschauer"
 
-#: ./content/event.py:221
+#. Default: "Optional participant"
+#: ./content/event.py:232
 msgid "vs_event_label_opt_participant"
 msgstr "optionaler Teilnehmer"
 
-#: ./content/event.py:220
+#. Default: "Participant"
+#: ./content/event.py:231
 msgid "vs_event_label_participant"
 msgstr "Teilnehmer"
 
-#: ./content/event.py:174
+# Repeat until
+#. Default: "Repeat until"
+#: ./content/event.py:113
+msgid "vs_event_label_repeat_until"
+msgstr "Wiederholung bis"
+
+#. Default: "Attendees and roles"
+#: ./content/event.py:181
 msgid "vs_event_label_roleAttendees"
 msgstr "Teilnehmer"
 
-#: ./content/event.py:178
+#. Default: "Role"
+#: ./content/event.py:185
 msgid "vs_event_label_roleColumn"
 msgstr "Rolle"
 
-#: ./content/event.py:179
+#. Default: "Show"
+#: ./content/event.py:186
 msgid "vs_event_label_showColumn"
 msgstr "Anzeigen"
 
+#. Default: "Weekdays"
 #: ./content/event.py:62
 msgid "vs_event_label_weekdays"
 msgstr "Wochentage"
@@ -224,49 +226,65 @@ msgstr "Wochentage"
 msgid "vs_label_add_dependent_event"
 msgstr "Ergänzenden Termin hinzufügen"
 
+#. Default: "Tuesday"
 #: ./content/event.py:53
 msgid "vs_label_di"
 msgstr "Dienstag"
 
+#. Default: "Thursday"
 #: ./content/event.py:55
 msgid "vs_label_do"
 msgstr "Donnerstag"
 
+#. Default: "Friday"
 #: ./content/event.py:56
 msgid "vs_label_fr"
 msgstr "Freitag"
 
+#. Default: "Wednesday"
 #: ./content/event.py:54
 msgid "vs_label_mi"
 msgstr "Mittwoch"
 
+#. Default: "Monday"
 #: ./content/event.py:52
 msgid "vs_label_mo"
 msgstr "Montag"
 
+#. Default: "Repeat until"
+#: ./content/event.py:160
+msgid "vs_label_repeat_until"
+msgstr ""
+
+#. Default: "Saturday"
 #: ./content/event.py:57
 msgid "vs_label_sa"
 msgstr "Samstag"
 
+#. Default: "Sunday"
 #: ./content/event.py:58
 msgid "vs_label_so"
 msgstr "Sonntag"
 
-msgid "Yearly"
-msgstr "Jährlich"
+# Supplementary Events
+#. Default: "Supplementary events"
+#: ./browser/vs_event_view.pt:179
+msgid "vs_label_supplementary_events"
+msgstr "Ergänzende Termine"
 
-msgid "Monthly"
-msgstr "Monatlich"
+#. Default: "Event repeats until this date"
+#: ./content/event.py:159
+msgid "vs_repeat_events_until_date"
+msgstr ""
 
-msgid "Weekly"
-msgstr "Wöchentlich"
+#. Default: "Subscription URL"
+#: ./browser/vs_event_view.pt:240
+msgid "vs_subscription_url"
+msgstr ""
 
-msgid "Daily"
-msgstr "Täglich"
-
-msgid "Does not repeat"
-msgstr "Keine Wiederholung"
-
-msgid "Event URL"
-msgstr "URL für Termin"
+# This event is a supplementary event to
+#. Default: "This event is a supplementary event to"
+#: ./browser/vs_event_view.pt:38
+msgid "vs_this_is_a_supplementary_event"
+msgstr "Dieser Termin ist ein ergänzender Termin zu"
 

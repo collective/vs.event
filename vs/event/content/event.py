@@ -49,18 +49,18 @@ VSEventSchema = atapi.Schema((
         name='weekdays',
         schemata='recurrence',
         vocabulary=atapi.DisplayList((
-            ('0', _(u'vs_label_mo')),
-            ('1', _(u'vs_label_di')),
-            ('2', _(u'vs_label_mi')),
-            ('3', _(u'vs_label_do')),
-            ('4', _(u'vs_label_fr')),
-            ('5', _(u'vs_label_sa')),
-            ('6', _(u'vs_label_so'))
+            ('0', _(u'vs_label_mo', 'Monday')),
+            ('1', _(u'vs_label_di', 'Tuesday')),
+            ('2', _(u'vs_label_mi', 'Wednesday')),
+            ('3', _(u'vs_label_do', 'Thursday')),
+            ('4', _(u'vs_label_fr', 'Friday')),
+            ('5', _(u'vs_label_sa', 'Saturday')),
+            ('6', _(u'vs_label_so', 'Sunday')),
         )),
         widget=atapi.MultiSelectionWidget(
             format="checkbox",
-            label=_(u'vs_event_label_weekdays',),
-            description=_(u'vs_event_help_weekdays'),
+            label=_(u'vs_event_label_weekdays', 'Weekdays'),
+            description=_(u'vs_event_help_weekdays', 'Select weekdays'),
         ),
     ),
     atapi.StringField(
@@ -68,9 +68,13 @@ VSEventSchema = atapi.Schema((
         schemata='recurrence',
         validators=('isLineOfInts',),
         widget=atapi.StringWidget(
-            label=_(u'vs_event_label_bysetpos'),
-            i18n_domain="vs.event",
-            description=_(u'vs_event_help_bysetpos'),
+            label=_(u'vs_event_label_bysetpos', 'Occurrence'),
+            description=_(u'vs_event_help_bysetpos', 'Comma separated list of '
+                           'numbers. If this event is on first and third '
+                           'Monday of the month, enter "1,3" and select '
+                           'appropriate day of the week above. For the last '
+                           'day of the month, enter "-1", select Monday '
+                           'through Friday above and monthly recurrence.'),
         ),
     ),
     atapi.LinesField(
@@ -78,8 +82,8 @@ VSEventSchema = atapi.Schema((
         schemata='recurrence',
         validators=('linesOfDates',),
         widget=atapi.LinesWidget(
-            label=_(u'vs_event_label_exceptions'),
-            description=_(u'vs_event_help_exceptions'),
+            label=_(u'vs_event_label_exceptions', 'Exceptions'),
+            description=_(u'vs_event_help_exceptions', 'Please enter exceptions to recurrence. One date per line in format YYYY-MM-DD'),
         ),
     ),
 
@@ -87,43 +91,35 @@ VSEventSchema = atapi.Schema((
          schemata="recurrence",
          required=True,
          i18n_domain = "vs.event",
-         vocabulary={-1: u'Does not repeat',
-                     YEARLY: u'Yearly',
-                     MONTHLY: u'Monthly',
-                     WEEKLY: u'Weekly',
-                     DAILY: u'Daily',
+         vocabulary={-1: _(u'Does not repeat'),
+                     YEARLY: _(u'Yearly'),
+                     MONTHLY: _(u'Monthly'),
+                     WEEKLY: _(u'Weekly'),
+                     DAILY: _(u'Daily'),
                      }.items(),
          default=-1,
-         widget=atapi.SelectionWidget(label='Frequency',
-                                      label_msgid="vs_event_label_frequency",
-                                      i18n_domain="vs.event")
+         widget=atapi.SelectionWidget(label=_(u"vs_event_label_frequency", 'Frequency'),
+                                     )
          ),
     atapi.IntegerField('interval',
          schemata="recurrence",
          required=True,
          default=1,
-         widget=atapi.IntegerWidget(label=u'Interval',
-                                    label_msgid="vs_event_label_interval",
-                                    i18n_domain="vs.event")
+         widget=atapi.IntegerWidget(label=_(u"vs_event_label_interval", 'Interval'),
+                                    )
          ),
     atapi.DateTimeField('until',
          schemata="recurrence",
-         widget=VSCalendarWidget(label=u"Repeat until",
-                                 label_msgid="vs_event_label_repeat_until",
-                                 description=u"Event repeats until this date.",
-                                 description_msgid = "vs_event_description_repeat__until",
-                                 i18n_domain="vs.event",
+         widget=VSCalendarWidget(label=_(u"vs_event_label_repeat_until", "Repeat until"),
+                                 description=_(u"vs_event_description_repeat__until", "Event repeats until this date."),
                                  with_time=1)
          ),
     atapi.IntegerField('count',
           schemata="recurrence",
-          widget=atapi.IntegerWidget(label=u'Count',
-                                     label_msgid="vs_event_label_count",
-                                     description=u"Maxinum number of times the event repeats",
-                                     description_msgid = "vs_event_description_count",
-                                     i18n_domain="vs.event")
+          widget=atapi.IntegerWidget(label=_(u"vs_event_label_count", 'Count'),
+                                     description=_(u"vs_event_description_count", "Maxinum number of times the event repeats"),
+                                    ),
           ),
-
 ))
 
 VSEventSchema = VSEventSchema + ATEvent.schema.copy()
@@ -278,16 +274,12 @@ def modifySubEventSchema(schema):
     schema.addField(atapi.BooleanField('wholeDay',
                                        default=False,
                                        description_msg='help_whole_day_event',
-                                       label='Whole day event',
-                                       label_msgid='label_whole_day_event',
-                                       i18n_domain='vs.event',
+                                       label=_(u'label_whole_day_event', 'Whole day event'),
                                        ))
     schema.addField(atapi.BooleanField('useEndDate',
                                        default=True,
                                        description_msg='help_has_end_date',
-                                       label='Use end date?',
-                                       label_msgid='label_use_end_date',
-                                       i18n_domain='vs.event',
+                                       label=_(u'label_use_end_date', 'Use end date?'),
                                        ))
     schema.moveField('wholeDay', before='startDate')
     schema.moveField('useEndDate', after='wholeDay')
