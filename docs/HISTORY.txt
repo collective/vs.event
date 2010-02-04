@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.23 - (Unreleased)
+0.2.23 - (2010/02/04)
 ---------------------
 
 * Backport changes from trunk to fix localisation for English
