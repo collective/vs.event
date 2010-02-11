@@ -194,12 +194,12 @@ def modifyEventSchema(schema):
                             columns=('name', 'mail','role', 'show'),
                             schemata='attendees',
                             widget = DataGridWidget(
-                                label=_(u'vs_event_label_roleAttendees',),
+                                label=_(u'vs_event_label_roleAttendees', "Attendees and roles"),
                                 columns={
-                                    'name':     Column(_(u'vs_event_label_nameColumn')),
-                                    'mail':     Column(_(u'vs_event_label_mailColumn')),
-                                    'role':     SelectColumn(_(u'vs_event_label_roleColumn'), vocabulary='getAttendeeRoles'),
-                                    'show':     CheckboxColumn(_(u'vs_event_label_showColumn')),
+                                    'name':     Column(_(u'vs_event_label_nameColumn', "Name")),
+                                    'mail':     Column(_(u'vs_event_label_mailColumn', "e-Mail")),
+                                    'role':     SelectColumn(_(u'vs_event_label_roleColumn', "Role"), vocabulary='getAttendeeRoles'),
+                                    'show':     CheckboxColumn(_(u'vs_event_label_showColumn', "Show")),
                                 }),
                             ))
     return schema
