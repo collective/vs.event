@@ -15,7 +15,13 @@ from Products.DataGridField.SelectColumn import SelectColumn
 from Products.DataGridField.CheckboxColumn import CheckboxColumn
 
 from Products.CMFCore.permissions import View
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+
+try:
+    from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
+except ImportError:
+    from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget\
+         import ReferenceBrowserWidget
+
 from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
 
 from vs.event.config import *
@@ -91,12 +97,13 @@ VSEventSchema = atapi.Schema((
          schemata="recurrence",
          required=True,
          i18n_domain = "vs.event",
-         vocabulary={-1: _(u'Does not repeat'),
-                     YEARLY: _(u'Yearly'),
-                     MONTHLY: _(u'Monthly'),
-                     WEEKLY: _(u'Weekly'),
-                     DAILY: _(u'Daily'),
-                     }.items(),
+         vocabulary=atapi.IntDisplayList((
+            (-1, _(u'Does not repeat')),
+            (YEARLY, _(u'Yearly')),
+            (MONTHLY, _(u'Monthly')),
+            (WEEKLY, _(u'Weekly')),
+            (DAILY, _(u'Daily'))
+        )),
          default=-1,
          widget=atapi.SelectionWidget(label=_(u"vs_event_label_frequency", 'Frequency'),
                                      )
@@ -262,11 +269,12 @@ atapi.registerType(VSEvent, PROJECTNAME)
 def modifySubEventSchema(schema):
     # remove unwanted fields for subevents
 
-    # PLONE 4 seems not to have a eventType field anymore, so it must be
-    # excluded here for compatibility
-    # for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone', 'eventUrl'):
-    for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone', 'eventType', 'eventUrl'):
-        schema[id].widget.visible = False
+    for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone',
+               'eventType', 'eventUrl'):
+        # Products.ATContentTypes in PLONE 4 dropped eventType in favor of
+        # subject...
+        if id in schema:
+            schema[id].widget.visible = False
     for field in schema.fields():
         if field.schemata in ('dates', 'categorization', 'ownership', 'settings'):
             field.widget.visible = False
