@@ -249,8 +249,8 @@ def modifySubEventSchema(schema):
 
     # PLONE 4 seems not to have a eventType field anymore, so it must be
     # excluded here for compatibility
-    # for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone', 'eventUrl'):
-    for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone', 'eventType', 'eventUrl'):
+    for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone', 'eventUrl'):
+#    for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone', 'eventType', 'eventUrl'):
         schema[id].widget.visible = False
     for field in schema.fields():
         if field.schemata in ('dates', 'categorization', 'ownership', 'settings'):
