@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.2.25 - (2010/0X/XX)
+---------------------
+* index for reccurent event was not working correctly, fixed [garbas]
+
 0.2.24 - (2010/04/04)
 ---------------------
 * CZ translation
