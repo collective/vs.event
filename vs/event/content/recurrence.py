@@ -39,53 +39,27 @@ class VSRecurrenceSupport(object):
         if getattr(self.context, 'frequency', -1) is -1:
             return None
         
-        dtstart = DT2dt(self.context.startDate)
+        rrule_attr = dict()
+        rrule_attr['dtstart'] = DT2dt(self.context.startDate)
+        rrule_attr['interval'] = self.context.interval
+        rrule_attr['count'] = self.context.count
+
         if self.context.until is not None:
             until = DT2dt(self.context.until)
-            until = until.replace(hour=23, minute=59, second=59, microsecond=999999)
-        else:
-            until = None
-        # Make it end at the end of the day:
-        indizies = [int(i) for i in self.context.getWeekdays()]
+            # Make it end at the end of the day:
+            rrule_attr['until'] = until.replace(hour=23, minute=59, second=59, microsecond=999999)
+
         days = []
-        bysetpos = None
+        indizies = [int(i) for i in self.context.getWeekdays()]
         for i in indizies:
             days.append(wdays[i])
+        if days:
+            rrule_attr['byweekday'] = days
         
         if self.context.getBysetpos():
-            bysetpos = [int(i) for i in self.context.getBysetpos().split(',')] 
+            rrule_attr['bysetpos'] = [int(i) for i in self.context.getBysetpos().split(',')] 
                 
-        rule = rrule.rrule(self.context.frequency,
-                       dtstart=dtstart,
-                       interval=self.context.interval,
-                       #wkst=None, 
-                       count=self.context.count, 
-                       until=until, 
-                       # byweekday=days,
-                       # bysetpos=self.context.getBysetpos(),
-                       #bysetpos=None,
-                       #bymonth=None, bymonthday=None, byyearday=None, byeaster=None,
-                       #byweekno=None, byweekday=None,
-                       #byhour=None, byminute=None, bysecond=None,
-                       #cache=False
-                   )
-        if days and bysetpos:
-            rule = rrule.rrule(self.context.frequency,
-                           dtstart=dtstart,
-                           interval=self.context.interval,
-                           #wkst=None, 
-                           count=self.context.count, 
-                           until=until, 
-                           byweekday=days,
-                           bysetpos=bysetpos,
-                           #bysetpos=None,
-                           #bymonth=None, bymonthday=None, byyearday=None, byeaster=None,
-                           #byweekno=None, byweekday=None,
-                           #byhour=None, byminute=None, bysecond=None,
-                           #cache=False
-                       )
-        
-        
+        rule = rrule.rrule(self.context.frequency, **rrule_attr)
         return rule
 
     def getOccurrenceDays(self, until=None):
