@@ -5,7 +5,7 @@
 
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Globals import InitializeClass
+from App.class_init import InitializeClass
 
 class iCalendarView(BrowserView):
     """ ICal export"""

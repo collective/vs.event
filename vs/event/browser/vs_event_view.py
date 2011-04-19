@@ -8,7 +8,7 @@ from datetime import date
 from dateable.kalends import IRecurrence
 from dateutil.parser import parse
 from zope.i18n import translate
-from Globals import InitializeClass
+from App.class_init import InitializeClass
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from AccessControl import getSecurityManager

@@ -5,7 +5,7 @@
 
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Globals import InitializeClass
+from App.class_init import InitializeClass
 from vs.event.config import *
 from vs.event.content import event_util
 import random

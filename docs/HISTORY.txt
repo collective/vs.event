@@ -1,11 +1,10 @@
 Changelog
 =========
 
-0.2.24 - (2010/03/04)
+0.3.0 - (unreleased)
 ---------------------
-vs_event_view - fixes for plone4
-
-...
+- vs_event_view - fixes for plone4
+- compatibility fixes
 
 0.2.19 - (2009/11/10)
 ---------------------
