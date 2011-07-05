@@ -107,7 +107,11 @@ def getICal(event):
         for r in res:
             out.write('ATTACH;VALUE=URI:%s\n' % r.absolute_url())
 
-    eventType = event.getEventType()
+    # Plone 4 type switched to use `Subject`
+    if safe_hasattr(event, 'getEventType'):
+        eventType = event.getEventType()
+    else:
+        eventType = event.Subject()
     if eventType:
         out.write('CATEGORIES:%s\n' % ','.join(eventType))
 
