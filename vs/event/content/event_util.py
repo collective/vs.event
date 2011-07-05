@@ -12,7 +12,7 @@ from dateable.kalends import IRecurringEvent
 
 
 def date_for_display(event):
-    """ Return dict containing pre-calculated information for 
+    """ Return dict containing pre-calculated information for
         building a <start>-<end> date string. Keys are
        'from_str' - date string for start date
        'to_str' - date string for end date
@@ -37,7 +37,7 @@ def date_for_display(event):
 
 
 def _dateForWholeDay(dt):
-    """ Replacement for rfc2445dt() for events lasting whole day in 
+    """ Replacement for rfc2445dt() for events lasting whole day in
         order to get the date string according to the current time zone.
         rfc2445dt() returns the date string according to UTC which is
         *not* what we want!
@@ -122,7 +122,7 @@ def getICal(event):
     # Recurrency
 #    if IRecurringEvent.providedBy(event):
     # ATT: better check interface?
-    if hasattr(event, 'frequency'):    
+    if hasattr(event, 'frequency'):
         d_map = ['MO','TU','WE','TH','FR','SA','SU']
         freq = event.getFrequency()
         if freq != -1:
@@ -132,20 +132,20 @@ def getICal(event):
                 f_str = 'MONTHLY'
             elif freq == WEEKLY:
                 f_str = 'WEEKLY'
-            else: 
+            else:
                 f_str = 'DAILY'
             days = event.getWeekdays()
             bysetpos = event.getBysetpos()
-            if days and bysetpos: 
+            if days and bysetpos:
                     d_str = ",".join([d_map[int(i)] for i in days])
                     rrule_str = 'RRULE:FREQ=%s;INTERVAL=%d;BYSETPOS=%s;BYDAY=%s' % (f_str, event.interval,bysetpos, d_str )
-            else: 
+            else:
                 rrule_str = 'RRULE:FREQ=%s;INTERVAL=%d' % (f_str, event.interval)
 
             if event.until:
                 rrule_str = "%s;UNTIL=%s" %(rrule_str, rfc2445dt(event.until))
 
-            out.write("%s\n" % rrule_str) 
+            out.write("%s\n" % rrule_str)
 
     # Contact information
     cn = []
