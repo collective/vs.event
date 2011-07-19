@@ -3,6 +3,8 @@ Changelog
 
 0.2.25 - (2010/0X/XX)
 ---------------------
+* Hook the custom indexer for ``recurrence_days`` up as a plone.indexer
+  based index. This allows it to work on Plone 4.x. [clayton]
 * Fix issues with icalendar usage [claytron]
 * index for reccurent event was not working correctly, fixed [garbas]
 

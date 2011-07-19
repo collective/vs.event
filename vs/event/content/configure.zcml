@@ -14,4 +14,8 @@
         provides="dateable.kalends.IRecurrence"
         factory=".recurrence.VSRecurrenceSupport" />
 
+    <adapter
+        name="recurrence_days"
+        factory=".indexing.recurrence_days" />
+
 </configure>
