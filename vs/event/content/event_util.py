@@ -7,6 +7,7 @@ from DateTime.DateTime import DateTime
 from Products.ATContentTypes.lib.calendarsupport import rfc2445dt, vformat, foldLine, ICS_EVENT_END, ICS_EVENT_START
 from Products.ATContentTypes.lib.calendarsupport import VCS_EVENT_START, VCS_EVENT_END
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import safe_hasattr
 
 from dateable.kalends import IRecurringEvent
 
