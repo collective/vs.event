@@ -205,7 +205,8 @@
         </div>
        
         <fieldset id="attachments" tal:define="atts view/getAttachments;
-                                               getInfoFor python:context.portal_workflow.getInfoFor;" 
+                                               getInfoFor python:context.portal_workflow.getInfoFor;
+                                               normalizeString nocall: context/plone_utils/normalizeString;" 
                   tal:condition="atts">
             <legend i18n:translate="vs_event_label_attachments" i18n:domain="vs.event">attachments</legend>
             <ul class="visualNoMarker">
