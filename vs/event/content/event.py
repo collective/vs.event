@@ -235,15 +235,20 @@ class VSEvent(ATEvent):
         """ Ensure that for single-day dates without an end date
             the end date is equal to the start date.
         """
-
+        reindex = False
         self.setExcludeFromNav(True)
 
         if not self.getUseEndDate():
             self.setEndDate(self.start())
+            reindex = True
 
         if self.getWholeDay():
             self.setStartDate(DateTime(self.start().strftime('%Y/%m/%d 00:00:00')))
             self.setEndDate(DateTime(self.end().strftime('%Y/%m/%d 23:59:00')))
+            reindex = True
+        # Make sure the new values are indexed properly
+        if reindex:
+            self.reindexObject(idxs=['start', 'end'])
 
     def getAttendeeRoles(self):
         """ """

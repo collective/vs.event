@@ -3,6 +3,8 @@ Changelog
 
 0.2.25 - (2010/0X/XX)
 ---------------------
+* Make sure that ``start`` and ``end`` are properly indexed when using
+  "no end date" and "whole day" events. [claytron]
 * Fix event view template when attachments are added. [claytron]
 * Hook the custom indexer for ``recurrence_days`` up as a plone.indexer
   based index. This allows it to work on Plone 4.x. [claytron]
