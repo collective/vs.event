@@ -29,7 +29,7 @@ def setup_package():
     ZopeTestCase.installPackage('vs.event')
 
 setup_package()
-PloneTestCase.setupPloneSite(products=('vs.event',))
+PloneTestCase.setupPloneSite(products=('vs.event', 'dateable.chronos'))
 
 class TestBase(PloneTestCase.FunctionalTestCase):
 
