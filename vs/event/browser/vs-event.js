@@ -62,7 +62,7 @@ $j(document).ready(function() {
 
     $j('.calendarInput').datepicker({dateFormat : jquery_date_format,
                                      numberOfMonths : 1,
-                                     showButtonPanel : true,
+                                     showButtonPanel : true
                                      });
 
     $j('.calendarInput').each(function(f) {
@@ -73,4 +73,4 @@ $j(document).ready(function() {
             this.value = python_date_format;
     });
 
-})
+});
