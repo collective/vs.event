@@ -124,7 +124,7 @@ VSEventSchema = atapi.Schema((
     atapi.IntegerField('count',
           schemata="recurrence",
           widget=atapi.IntegerWidget(label=_(u"vs_event_label_count", 'Count'),
-                                     description=_(u"vs_event_description_count", "Maxinum number of times the event repeats"),
+                                     description=_(u"vs_event_description_count", "Maximum number of times the event repeats"),
                                     ),
           ),
 ))

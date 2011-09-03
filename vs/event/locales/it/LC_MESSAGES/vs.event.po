@@ -128,8 +128,8 @@ msgstr "secondo"
 msgid "vCalendar"
 msgstr "vCalendar"
 
-# Maxinum number of times the event repeats
-#. Default: "Maxinum number of times the event repeats"
+# Maximum number of times the event repeats
+#. Default: "Maximum number of times the event repeats"
 #: ./content/event.py:120
 msgid "vs_event_description_count"
 msgstr "Numero massimo di volte che l'Evento si ripete"
