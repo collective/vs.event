@@ -5,6 +5,7 @@ Changelog
 ---------------------
 - vs_event_view - fixes for plone4
 - compatibility fixes
+- *requires* Plone 4.X
 
 
 0.2.19 - (2009/11/10)
