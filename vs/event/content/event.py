@@ -15,7 +15,7 @@ from Products.DataGridField.SelectColumn import SelectColumn
 from Products.DataGridField.CheckboxColumn import CheckboxColumn
 
 from Products.CMFCore.permissions import View
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
 
 from vs.event.config import *
@@ -250,7 +250,6 @@ def modifySubEventSchema(schema):
     # PLONE 4 seems not to have a eventType field anymore, so it must be
     # excluded here for compatibility
     for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone', 'eventUrl'):
-#    for id in ('attendees', 'contactName', 'contactEmail', 'contactPhone', 'eventType', 'eventUrl'):
         schema[id].widget.visible = False
     for field in schema.fields():
         if field.schemata in ('dates', 'categorization', 'ownership', 'settings'):

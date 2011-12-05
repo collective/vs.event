@@ -6,7 +6,7 @@ from dateutil import rrule
 from zope import interface
 from zope import component
 from zope import schema
-from zope.app.annotation import interfaces as annointerfaces
+from zope.annotation import interfaces as annointerfaces
 from dateable import kalends
 from dateutil.rrule import MO, TU, WE, TH, FR, SA, SU
 from dtutils import DT2dt

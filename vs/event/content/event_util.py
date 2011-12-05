@@ -107,9 +107,9 @@ def getICal(event):
         for r in res:
             out.write('ATTACH;VALUE=URI:%s\n' % r.absolute_url())
 
-    eventType = event.getEventType()
-    if eventType:
-        out.write('CATEGORIES:%s\n' % ','.join(eventType))
+#    eventType = event.getEventType()
+#    if eventType:
+#        out.write('CATEGORIES:%s\n' % ','.join(eventType))
 
     # TODO  -- NO! see the RFC; ORGANIZER field is not to be used for non-group-scheduled entities
     # ORGANIZER;CN=%(name):MAILTO=%(email)
