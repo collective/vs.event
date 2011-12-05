@@ -23,9 +23,12 @@ PloneTestCase.installProduct('vs.event')
 @onsetup
 def setup_package():
     fiveconfigure.debug_mode = True
+    import dateable.chronos
     import vs.event
+    zcml.load_config('configure.zcml', dateable.chronos)
     zcml.load_config('configure.zcml', vs.event)
     fiveconfigure.debug_mode = False
+    ZopeTestCase.installPackage('dateable.chronos')
     ZopeTestCase.installPackage('vs.event')
 
 setup_package()
