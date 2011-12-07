@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.3.2 - (Unreleased)
+--------------------
+- add french translation [toutpt]
+
+0.3.1 - (2011-12-05)
+--------------------
+
+
 0.3.0 - (2011-12-05)
 ---------------------
 - vs_event_view - fixes for plone4
