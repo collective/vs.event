@@ -45,15 +45,8 @@
       />
 
     <!-- Resource directory for JS -->
-    <browser:resource
-        name="vs-event.js"
-        file="vs-event.js"
-        permission="zope.Public"
-        />
-
-    <browser:resource
-        name="vs-event.css"
-        file="vs-event.css"
-        permission="zope.Public"
+    <browser:resourceDirectory
+        name="vs.event"
+        directory="resources"
         />
 </configure>
