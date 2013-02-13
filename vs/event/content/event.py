@@ -236,7 +236,6 @@ class VSEvent(ATEvent):
             the end date is equal to the start date.
         """
         reindex = False
-        self.setExcludeFromNav(True)
 
         if not self.getUseEndDate():
             self.setEndDate(self.start())
