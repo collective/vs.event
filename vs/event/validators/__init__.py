@@ -9,6 +9,7 @@ from Products.validation.interfaces.IValidator import IValidator
 from Products.validation.validators.RegexValidator import RegexValidator
 from zope.interface import implements
 
+
 class VSLinesOfDateValidator:
     implements(IValidator)
 
