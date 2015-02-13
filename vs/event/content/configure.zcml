@@ -5,12 +5,16 @@
     i18n_domain="vs.event">
 
     <class class="vs.event.content.event.VSEvent">
-        <implements interface="dateable.kalends.IRecurringEvent" />        
+        <implements interface="dateable.kalends.IRecurringEvent" />
     </class>
 
-    <adapter 
+    <adapter
         for="vs.event.content.event.VSEvent"
         provides="dateable.kalends.IRecurrence"
         factory=".recurrence.VSRecurrenceSupport" />
+
+    <adapter
+        name="SearchableText"
+        factory=".indexing.recurrence_days" />
 
 </configure>

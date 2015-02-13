@@ -1,7 +1,8 @@
-<?xml version="1.0"?> 
-<metadata> 
-    <version>1.1</version> 
+<?xml version="1.0"?>
+<metadata>
+    <version>1.1</version>
     <dependencies>
+        <dependency>profile-dateable.chronos:default</dependency>
         <dependency>profile-collective.calendarwidget:default</dependency>
     </dependencies>
-</metadata> 
+</metadata>

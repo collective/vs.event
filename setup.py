@@ -1,12 +1,15 @@
+# -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 import os
 
-version = '0.3.3-dev0'
+version = '0.9.0-dev0'
 
 setup(
     name='vs.event',
     version=version,
-    description="An extended event content-type for Plone (and Plone4Artists calendar)",
+    description=(
+        "An extended event content-type for Plone (and Plone4Artists calendar)"
+    ),
     long_description=(
         open("README.rst").read() + "\n" +
         open(os.path.join("docs", "HISTORY.txt")).read()
@@ -33,14 +36,19 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
-        'python-dateutil',
+        'Products.DataGridField',
+        'collective.calendarwidget',
         'dateable.chronos',
         'dateable.kalends',
-        'collective.calendarwidget',
-        'Products.DataGridField',
-        'zope.app.annotation',
-        # -*- Extra requirements: -*-
+        'python-dateutil',
     ],
+    extras_require={
+        'tests': [
+            'mock',
+            'plone.app.testing',
+            'unittest2',
+        ],
+    },
     entry_points="""
       # -*- entry_points -*-
       [z3c.autoinclude.plugin]

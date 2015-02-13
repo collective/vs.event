@@ -6,7 +6,8 @@
 ################################################################
 
 from StringIO import StringIO
-from .config import PROJECTNAME, DEPENDENCIES
+from .config import DEPENDENCIES
+from .config import PROJECTNAME
 from Products.CMFCore.utils import getToolByName
 
 

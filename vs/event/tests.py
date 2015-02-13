@@ -2,23 +2,21 @@
 # vs.event - published under the GPL 2
 # Authors: Andreas Jung, Veit Schiele, Anne Walther
 ################################################################
-
-from dateable import kalends
-import datetime
-from dateutil import rrule
-
-import zope.interface
-from Testing import ZopeTestCase
-from Products.Five import zcml, fiveconfigure 
 from AccessControl import getSecurityManager
 from DateTime.DateTime import DateTime
-from Products.PloneTestCase import PloneTestCase
+from dateutil import rrule
+from Products.Five import zcml, fiveconfigure
 from Products.PloneTestCase import layer
+from Products.PloneTestCase import PloneTestCase
 from Products.PloneTestCase.layer import onsetup
-
+from Testing import ZopeTestCase
+from dateable import kalends
 from vs.event.content import event_util
+import datetime
+import zope.interface
 
 PloneTestCase.installProduct('vs.event')
+
 
 @onsetup
 def setup_package():
@@ -34,12 +32,14 @@ def setup_package():
 setup_package()
 PloneTestCase.setupPloneSite(products=('vs.event', 'dateable.chronos'))
 
+
 class TestBase(PloneTestCase.FunctionalTestCase):
 
     def afterSetUp(self):
         ZopeTestCase.utils.setupCoreSessions(self.app)
         self.membership = self.portal.portal_membership
         self.membership.addMember('god', 'secret', ['Manager'], [])
+
 
 class VSEventTest(TestBase):
 
@@ -59,7 +59,7 @@ class VSEventTest(TestBase):
         self.assertEqual('Manager' in user.getRoles(), True)
         self.portal.invokeFactory('VSEvent', id='foo')
         event = self.portal['foo']
-        self.assertEqual(event.portal_type, 'VSEvent') 
+        self.assertEqual(event.portal_type, 'VSEvent')
 
     def testOneDayEvent(self):
         self.login('god')
@@ -89,19 +89,20 @@ class VSEventTest(TestBase):
         self.login('god')
         self.portal.invokeFactory('VSEvent', id='foo')
         event = self.portal['foo']
-        data = event.getICal()
+        event.getICal()
 
     def testiCalVSSubEvent(self):
         self.login('god')
         self.portal.invokeFactory('VSSubEvent', id='foo')
         event = self.portal['foo']
-        data = event.getICal()
+        event.getICal()
 
     def testVCal(self):
         self.login('god')
         self.portal.invokeFactory('VSEvent', id='foo')
         event = self.portal['foo']
-        data = event.getVCal()
+        event.getVCal()
+
 
 class RecurrenceTest(TestBase):
 
@@ -110,16 +111,18 @@ class RecurrenceTest(TestBase):
         # Basic recurrence, daily for one year:
         self.folder.invokeFactory('VSEvent', 'event')
         event = getattr(self.folder, 'event')
-        event.update(startDate = DateTime('2001/02/01 10:00'),
-                     endDate = DateTime('2001/02/01 14:00'))
+        event.update(
+            startDate=DateTime('2001/02/01 10:00'),
+            endDate=DateTime('2001/02/01 14:00')
+        )
 
         # Mark as recurring
         zope.interface.alsoProvides(event, kalends.IRecurringEvent)
         recurrence = kalends.IRecurrence(event)
 
         # Set the recurrence info
-        event.frequency=rrule.DAILY
-        event.until=DateTime('2002/02/01')
+        event.frequency = rrule.DAILY
+        event.until = DateTime('2002/02/01')
         event.interval = 1
         event.count = None
 
@@ -148,21 +151,21 @@ class RecurrenceTest(TestBase):
         self.folder.invokeFactory('VSEvent', 'event')
         event = getattr(self.folder, 'event')
 
-        event.update(startDate = DateTime('2001/02/01 00:00'),
-                     endDate = DateTime('2001/02/01 04:00'))
+        event.update(startDate=DateTime('2001/02/01 00:00'),
+                     endDate=DateTime('2001/02/01 04:00'))
 
         # Mark as recurring
         zope.interface.alsoProvides(event, kalends.IRecurringEvent)
         recurrence = kalends.IRecurrence(event)
 
         # Set the recurrence info
-        event.frequency=rrule.DAILY
-        event.until=DateTime('2001/02/04')
-        event.interval=1
-        event.count=None
+        event.frequency = rrule.DAILY
+        event.until = DateTime('2001/02/04')
+        event.interval = 1
+        event.count = None
 
         # Test
-        dates = recurrence.getOccurrenceDays()        
+        dates = recurrence.getOccurrenceDays()
         self.failUnlessEqual(dates[0], datetime.date(2001, 2, 2).toordinal())
         self.failUnlessEqual(dates[-1], datetime.date(2001, 2, 4).toordinal())
         self.failUnlessEqual(len(dates), 3)
@@ -172,18 +175,18 @@ class RecurrenceTest(TestBase):
         self.folder.invokeFactory('VSEvent', 'event')
         event = getattr(self.folder, 'event')
 
-        event.update(startDate = DateTime('2007/02/01 00:00'),
-                     endDate = DateTime('2007/02/01 04:00'))
+        event.update(startDate=DateTime('2007/02/01 00:00'),
+                     endDate=DateTime('2007/02/01 04:00'))
 
         # Mark as recurring
         zope.interface.alsoProvides(event, kalends.IRecurringEvent)
         recurrence = kalends.IRecurrence(event)
 
         # Set the recurrence info
-        event.frequency=rrule.WEEKLY
-        event.until=DateTime('2008/02/04')
-        event.interval=1
-        event.count=None
+        event.frequency = rrule.WEEKLY
+        event.until = DateTime('2008/02/04')
+        event.interval = 1
+        event.count = None
 
         # Test
         dates = recurrence.getOccurrenceDays()
