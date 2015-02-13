@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.9.0 - (Unreleased)
+--------------------
+
+- Plone 4.3 compatibility
+  [ale-rt]
+
 0.3.2 - (Unreleased)
 --------------------
 - add french translation [toutpt]
@@ -8,13 +14,11 @@ Changelog
 0.3.1 - (2011-12-05)
 --------------------
 
-
 0.3.0 - (2011-12-05)
 ---------------------
 - vs_event_view - fixes for plone4
 - compatibility fixes
 - *requires* Plone 4.X
-
 
 0.2.19 - (2009/11/10)
 ---------------------
@@ -100,7 +104,7 @@ Changelog
 
 * timezone fix in iCal export: whole day events used
   a shortened date string based on UTC - but we need
-  a date string based on the local zone. 
+  a date string based on the local zone.
 
 
 0.2.4 - (2009/06/17)
@@ -127,13 +131,13 @@ Changelog
 
 * test suite
 * re-worked date format string handling
-* minor fixes 
+* minor fixes
 
 0.2.0 - (2009/06/12)
 --------------------
 
 * fixes and cleanup
- 
+
 0.1.3 - (2009/06/12)
 --------------------
 
@@ -150,4 +154,3 @@ Changelog
 --------------------
 
 * Initial release
-
