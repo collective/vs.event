@@ -6,8 +6,9 @@
 ################################################################
 
 from StringIO import StringIO
-from config import PROJECTNAME, DEPENDENCIES
+from .config import PROJECTNAME, DEPENDENCIES
 from Products.CMFCore.utils import getToolByName
+
 
 class Generator(object):
 
@@ -19,18 +20,22 @@ class Generator(object):
                 qi.reinstallProducts([product])
             else:
                 qi.installProduct(product, locked=0)
-                print >> out, "Product installed: %s \n" %product
+                print >> out, "Product installed: %s \n" % product
 
     def setCalendarProperties(self, p, out):
-        tool = getToolByName(p , 'portal_calendar')
+        tool = getToolByName(p, 'portal_calendar')
         types = list(tool.getCalendarTypes())
         for id in ('VSEvent', 'VSSubEvent'):
-            if not id in types:
+            if id not in types:
                 types.append(id)
         tool.calendar_types = tuple(types)
         if not tool.hasProperty('vs_event_supplementary_events'):
-            tool.manage_addProperty('vs_event_supplementary_events', True, 'boolean')
-        print >> out, "VSEvent types for Calendar activated \n" 
+            tool.manage_addProperty(
+                'vs_event_supplementary_events',
+                True,
+                'boolean'
+            )
+        print >> out, "VSEvent types for Calendar activated \n"
 
 
 def setupVarious(context):
