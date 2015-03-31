@@ -189,6 +189,7 @@
             <tal:related tal:repeat="item atts"
                          tal:define="use_view_action site_properties/typesUseViewActionInListings|python:();">
                 <li tal:define="
+                        normalizeString      nocall:context/@@plone/normalizeString;
                         desc                item/Description;
                         item_type           item/portal_type;
                         item_icon           python:plone_view.getIcon(item);
